@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Insights | BJ Beier</title>
+    
+    <!-- Fonts & CSS (Same as Index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            accent: '#38bdf8',
+                            terminal: '#22c55e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-300 font-sans antialiased">
+
+    <!-- Navigation (Simplified for Blog) -->
+    <nav class="fixed w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="mr-2 w-5 h-5"></i>
+                    Back to Home
+                </a>
+                <span class="font-mono font-bold text-white"><span class="text-brand-accent">/</span>insights</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="pt-32 pb-12 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Digital Insights</h1>
+        <p class="text-slate-400 max-w-xl mx-auto">
+            A collection of thoughts on technology, leadership, and the occasional home automation disaster.
+        </p>
+    </header>
+
+    <!-- Blog Posts Container -->
+    <main class="max-w-4xl mx-auto px-4 pb-20 space-y-12">
+
+        <!-- Post 1 -->
+        <article id="linux-docker" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Sep 26, 2024</span>
+                    <span>#Linux #Docker</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">My Journey into Linux and Docker</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    Working in tech for half of my life and tinkering in tech for almost all of it, I've dabbled in a little bit of everything. Recently, I decided it was time to move my home lab away from standalone heavy VMs and into the world of containerization.
+                </p>
+                <p>
+                    <strong>Why Docker?</strong><br>
+                    The efficiency gains were immediate. Instead of dedicating 4GB of RAM to a VM running a simple DNS blocker, I could run Pi-Hole in a container using a fraction of the resources.
+                </p>
+                <p>
+                    The learning curve wasn't flat—understanding volumes and networking took a weekend of "trial by fire"—but the result is a portable, clean infrastructure defined entirely in code (YAML).
+                </p>
+            </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article id="digital-refresh" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Jan 5, 2022</span>
+                    <span>#Personal #Web</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Time For A Digital Refresh</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    A number of years ago, I purchased my own domain name. It was the first step in claiming my digital identity. Now it's time to update it for the modern web.
+                </p>
+                <p>
+                    This new site represents a shift from "just a blog" to a digital garden—a place where my professional work and personal hobbies can coexist. No heavy CMS, just clean code and fast load times.
+                </p>
+            </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article id="best-self" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Dec 1, 2018</span>
+                    <span>#Career #Leadership</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Be Your Best Self – Show Your Best Self</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    This post is a follow up to “Be Your Best Self – Tips For Any Employee”. Navigating the corporate ladder while staying true to your skills is a balancing act.
+                </p>
+                <p>
+                    The core takeaway? Authenticity wins. Whether you are in the server room or the boardroom, people respect consistency. Don't hide your "geek" side—leverage it as your unique advantage.
+                </p>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2025 BJ Beier. All rights reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
