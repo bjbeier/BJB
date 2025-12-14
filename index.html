@@ -16,16 +16,15 @@
     <script src="scripts.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Tailwind CSS (Loads config from scripts.js window object) -->
+    <!-- Tailwind CSS -->
     <script>
-        // Apply the config defined in scripts.js to the tailwind object before it loads
         if(window.tailwindConfig) {
             tailwind = { config: window.tailwindConfig };
         }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-white">
+<body class="bg-slate-50 dark:bg-brand-dark text-slate-700 dark:text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-white transition-colors duration-300">
 
     <!-- Nav Placeholder -->
     <div id="nav-placeholder"></div>
@@ -38,7 +37,7 @@
                 <!-- Text Content -->
                 <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
                     <!-- Status Badge -->
-                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-mono mb-6">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-blue-200 dark:border-brand-accent/30 bg-blue-50 dark:bg-brand-accent/10 text-blue-600 dark:text-brand-accent text-xs font-mono mb-6">
                         <span class="relative flex h-2 w-2 mr-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
@@ -46,29 +45,29 @@
                         System Status: Online
                     </div>
                     
-                    <!-- Headshot Mobile (Visible only on small screens) -->
+                    <!-- Headshot Mobile -->
                     <div class="lg:hidden mb-6 flex justify-center">
-                         <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-32 h-32 rounded-full border-4 border-slate-700 shadow-xl object-cover">
+                         <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-32 h-32 rounded-full border-4 border-slate-200 dark:border-slate-700 shadow-xl object-cover">
                     </div>
 
-                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-6">
                         Hi, I'm BJ.<br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-600">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-sky-500 dark:from-brand-accent dark:to-blue-600">
                             I learn & lead
                         </span>
                     </h1>
                     
                     <div class="h-8 mb-8">
-                        <span id="typewriter" class="font-mono text-xl sm:text-2xl text-brand-terminal typing-cursor"></span>
+                        <span id="typewriter" class="font-mono text-xl sm:text-2xl text-green-600 dark:text-brand-terminal typing-cursor"></span>
                     </div>
 
-                    <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
                         Currently serving as <strong>Chief Information Officer</strong> at Guardian Savings Bank. 
                         Bridging the gap between enterprise finance strategy and the sheer joy of tinkering with 
                         Linux, Docker, and Home Automation. 
                     </p>
 
-                    <!-- Mobile Terminal Window (Visible on Mobile, Hidden on Desktop) -->
+                    <!-- Mobile Terminal Window -->
                     <div class="block lg:hidden text-left mb-10 mx-auto max-w-md">
                          <div class="terminal-window rounded-lg bg-[#1e1e1e] border border-slate-700 overflow-hidden relative z-10">
                             <div class="flex items-center px-4 py-2 bg-[#2d2d2d] border-b border-slate-700">
@@ -79,7 +78,7 @@
                                 </div>
                                 <div class="flex-1 text-center text-xs font-mono text-slate-400">bj@mobile-term:~</div>
                             </div>
-                            <div class="p-4 font-mono text-xs sm:text-sm">
+                            <div class="p-4 font-mono text-xs sm:text-sm text-slate-300">
                                 <div class="mb-2">
                                     <span class="text-green-400">bj@mobile:~$</span> neofetch
                                 </div>
@@ -112,25 +111,25 @@
                             <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
                         </a>
                         <div class="flex gap-4">
-                            <a href="https://linkedin.com/in/bjbeier" target="_blank" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
+                            <a href="https://linkedin.com/in/bjbeier" target="_blank" class="p-3 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all">
                                 <i data-lucide="linkedin" class="w-5 h-5"></i>
                             </a>
-                            <a href="mailto:contact@bjbeier.com" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all" title="Email Me">
+                            <a href="mailto:contact@bjbeier.com" class="p-3 border border-slate-300 dark:border-slate-600 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all" title="Email Me">
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Visual/Image Desktop (Hidden on Mobile) -->
+                <!-- Visual/Image Desktop -->
                 <div class="lg:col-span-5 relative hidden lg:block">
                     <!-- Decorative blob -->
-                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-brand-terminal rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-blue-200 dark:bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 dark:opacity-20 animate-blob"></div>
+                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-green-200 dark:bg-brand-terminal rounded-full mix-blend-multiply filter blur-3xl opacity-50 dark:opacity-20 animate-blob animation-delay-2000"></div>
 
                     <!-- Headshot Desktop Floating -->
                      <div class="absolute -top-12 -left-12 z-20">
-                        <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-24 h-24 rounded-full border-4 border-brand-dark shadow-2xl object-cover transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+                        <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-24 h-24 rounded-full border-4 border-white dark:border-brand-dark shadow-2xl object-cover transform -rotate-6 hover:rotate-0 transition-transform duration-300">
                     </div>
 
                     <!-- Terminal Window Mockup -->
@@ -143,7 +142,7 @@
                             </div>
                             <div class="flex-1 text-center text-xs font-mono text-slate-400">bj@home-lab:~</div>
                         </div>
-                        <div class="p-6 font-mono text-sm">
+                        <div class="p-6 font-mono text-sm text-slate-300">
                             <div class="mb-4">
                                 <span class="text-green-400">bj@home-lab:~$</span> neofetch
                             </div>
@@ -179,54 +178,54 @@
     </section>
 
     <!-- Tech Stack Section -->
-    <section id="stack" class="py-20 bg-slate-900/50">
+    <section id="stack" class="py-20 bg-white dark:bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-white mb-4">The Stack & Interests</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">The Stack & Interests</h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                     From enterprise boardrooms to my personal home lab rack, these are the tools and technologies I interact with daily.
                 </p>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Stack Item 1 -->
-                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group cursor-default">
                     <div class="flex items-center justify-between mb-4">
-                        <i data-lucide="server" class="w-8 h-8 text-blue-400"></i>
-                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Infra</span>
+                        <i data-lucide="server" class="w-8 h-8 text-blue-500 dark:text-blue-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Infra</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Linux & Virtualization</h3>
-                    <p class="text-sm text-slate-400">Tinkering with Proxmox, Docker containers, and minimalist distros to test new ideas.</p>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Linux & Virtualization</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Tinkering with Proxmox, Docker containers, and minimalist distros to test new ideas.</p>
                 </div>
 
                 <!-- Stack Item 2 -->
-                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group cursor-default">
                     <div class="flex items-center justify-between mb-4">
-                        <i data-lucide="home" class="w-8 h-8 text-green-400"></i>
-                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">IoT</span>
+                        <i data-lucide="home" class="w-8 h-8 text-green-500 dark:text-green-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">IoT</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Home Automation</h3>
-                    <p class="text-sm text-slate-400">Home Assistant setups that actually help (when I'm not breaking them). Practical dad-tech.</p>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Home Automation</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Home Assistant setups that actually help (when I'm not breaking them). Practical dad-tech.</p>
                 </div>
 
                 <!-- Stack Item 3 -->
-                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group cursor-default">
                     <div class="flex items-center justify-between mb-4">
-                        <i data-lucide="briefcase" class="w-8 h-8 text-purple-400"></i>
-                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Work</span>
+                        <i data-lucide="briefcase" class="w-8 h-8 text-purple-500 dark:text-purple-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Work</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Leadership & Strategy</h3>
-                    <p class="text-sm text-slate-400">CIO at Guardian Savings Bank. Merging financial security with modern innovation.</p>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Leadership & Strategy</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">CIO at Guardian Savings Bank. Merging financial security with modern innovation.</p>
                 </div>
 
                 <!-- Stack Item 4 -->
-                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group cursor-default">
                     <div class="flex items-center justify-between mb-4">
-                        <i data-lucide="smartphone" class="w-8 h-8 text-orange-400"></i>
-                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Mobile</span>
+                        <i data-lucide="smartphone" class="w-8 h-8 text-orange-500 dark:text-orange-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Mobile</span>
                     </div>
-                    <h3 class="text-lg font-semibold text-white mb-2">Android Ecosystem</h3>
-                    <p class="text-sm text-slate-400">Open source advocate. Using Android since v1. Customizing flows to optimize life.</p>
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white mb-2">Android Ecosystem</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Open source advocate. Using Android since v1. Customizing flows to optimize life.</p>
                 </div>
             </div>
         </div>
@@ -237,10 +236,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
-                    <h2 class="text-3xl font-bold text-white mb-4">Projects & Lab</h2>
-                    <p class="text-slate-400">Current experiments and past ventures.</p>
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Projects & Lab</h2>
+                    <p class="text-slate-600 dark:text-slate-400">Current experiments and past ventures.</p>
                 </div>
-                <a href="https://github.com/bjbeier" target="_blank" class="hidden md:inline-flex items-center text-sm font-mono text-brand-accent hover:text-white transition-colors mt-4 md:mt-0">
+                <a href="https://github.com/bjbeier" target="_blank" class="hidden md:inline-flex items-center text-sm font-mono text-blue-600 dark:text-brand-accent hover:text-blue-800 dark:hover:text-white transition-colors mt-4 md:mt-0">
                     View GitHub Activity <i data-lucide="arrow-up-right" class="ml-2 w-4 h-4"></i>
                 </a>
             </div>
@@ -293,41 +292,41 @@
     </section>
 
     <!-- The Network (Interesting Links) -->
-    <section id="network" class="py-20 bg-slate-900/30">
+    <section id="network" class="py-20 bg-slate-50 dark:bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-8">The Network</h2>
-            <p class="text-slate-400 mb-8 max-w-2xl">Communities, groups, and resources I find valuable.</p>
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">The Network</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">Communities, groups, and resources I find valuable.</p>
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Network Item 1 (TabGeeks) -->
-                <a href="https://tabgeeks.com" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
+                <a href="https://tabgeeks.com" target="_blank" class="glass-card p-6 rounded-lg hover:border-blue-400 dark:hover:border-brand-accent/50 transition-all group">
                     <div class="flex items-center gap-4">
                         <div class="flex-shrink-0">
-                            <img src="images/tabgeeks.png" alt="TabGeeks" class="w-16 h-16 rounded-md object-contain bg-white/10 p-2">
+                            <img src="images/tabgeeks.png" alt="TabGeeks" class="w-16 h-16 rounded-md object-contain bg-slate-100 dark:bg-white/10 p-2">
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-brand-accent">TABGeeks</h3>
-                            <p class="text-sm text-slate-400 mt-1">An independent network of shows and resources by IT Professionals, for IT Professionals.</p>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-brand-accent">TABGeeks</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">An independent network of shows and resources by IT Professionals, for IT Professionals.</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Network Item 2 (TechnoTim) -->
-                <a href="https://technotim.live/" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
+                <a href="https://technotim.live/" target="_blank" class="glass-card p-6 rounded-lg hover:border-blue-400 dark:hover:border-brand-accent/50 transition-all group">
                     <div class="flex items-center gap-4">
                         <div class="flex-shrink-0">
                             <img src="images/technotim.jpg" alt="TechnoTim Logo" class="w-16 h-16 rounded-md object-cover">
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-white group-hover:text-brand-accent">TechnoTim</h3>
-                            <p class="text-sm text-slate-400 mt-1">Popular YouTube channel and community focused on Home Lab, containers, and self-hosting.</p>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-brand-accent">TechnoTim</h3>
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Popular YouTube channel and community focused on Home Lab, containers, and self-hosting.</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Placeholder for future items -->
-                <div class="border border-dashed border-slate-700 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 min-h-[100px]">
-                    <i data-lucide="plus" class="w-8 h-8 text-slate-600 mb-2"></i>
+                <div class="border border-dashed border-slate-300 dark:border-slate-700 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 min-h-[100px]">
+                    <i data-lucide="plus" class="w-8 h-8 text-slate-500 dark:text-slate-600 mb-2"></i>
                     <span class="text-sm text-slate-500">More coming soon...</span>
                 </div>
             </div>
@@ -335,11 +334,11 @@
     </section>
 
     <!-- Latest Thoughts Preview -->
-    <section id="thoughts-preview" class="py-20 border-y border-white/5 bg-slate-800/20">
+    <section id="thoughts-preview" class="py-20 border-y border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-slate-800/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Digital Insights</h2>
-            <p class="text-slate-400 mb-8">Thoughts on leadership, technology, and tinkering.</p>
-            <a href="blog.html" class="inline-flex items-center justify-center px-8 py-4 border border-brand-accent text-base font-medium rounded-lg text-brand-accent hover:bg-brand-accent hover:text-white transition-all">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Digital Insights</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-8">Thoughts on leadership, technology, and tinkering.</p>
+            <a href="blog.html" class="inline-flex items-center justify-center px-8 py-4 border border-blue-600 dark:border-brand-accent text-base font-medium rounded-lg text-blue-600 dark:text-brand-accent hover:bg-blue-600 dark:hover:bg-brand-accent hover:text-white transition-all">
                 Read the Blog
                 <i data-lucide="book-open" class="ml-2 h-5 w-5"></i>
             </a>
