@@ -34,7 +34,7 @@ function getNavHTML() {
             </a>
 
             <!-- Desktop Menu -->
-            <div class="nav-links hidden-md">
+            <div class="nav-links desktop-only">
                 <a href="${aboutLink}" class="nav-link">About</a>
                 <a href="${stackLink}" class="nav-link">The Stack</a>
                 <a href="${projectsLink}" class="nav-link">Projects</a>
@@ -49,7 +49,7 @@ function getNavHTML() {
             </div>
 
             <!-- Mobile Controls -->
-            <div class="flex items-center gap-4 hidden-desktop">
+            <div class="flex items-center gap-4 mobile-only">
                 <button id="theme-toggle-mobile" class="theme-toggle">
                     <i data-lucide="moon" class="hidden-light-mode"></i>
                     <i data-lucide="sun" class="hidden-dark-mode"></i>
@@ -134,8 +134,14 @@ function updateThemeIcons() {
     const moons = document.querySelectorAll('[data-lucide="moon"]');
     const suns = document.querySelectorAll('[data-lucide="sun"]');
     
-    moons.forEach(el => el.style.display = isDark ? 'none' : 'block');
-    suns.forEach(el => el.style.display = isDark ? 'block' : 'none');
+    // Hide Moon (dark mode icon) when in dark mode, show Sun (light mode icon)
+    document.querySelectorAll('.hidden-light-mode').forEach(el => {
+        el.style.display = isDark ? 'none' : 'block';
+    });
+    // Hide Sun (light mode icon) when in light mode, show Moon (dark mode icon)
+    document.querySelectorAll('.hidden-dark-mode').forEach(el => {
+        el.style.display = isDark ? 'block' : 'none';
+    });
 }
 
 // Initialization

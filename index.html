@@ -23,7 +23,7 @@
         <div class="container">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <!-- Text -->
-                <div class="text-center md:text-left">
+                <div class="text-block">
                     <div class="status-badge">
                         <span class="relative flex h-2 w-2 mr-2">
                           <span style="background-color: var(--accent); position: absolute; width: 100%; height: 100%; border-radius: 50%; opacity: 0.75; animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
@@ -33,7 +33,7 @@
                     </div>
                     
                     <!-- Mobile Headshot -->
-                    <div class="hidden-md flex justify-center mb-8">
+                    <div class="mobile-only justify-center mb-8">
                          <img src="images/bjbeier.jpg" alt="BJ Beier" class="rounded-full border-4 shadow-xl object-cover" style="width: 150px; height: 150px;">
                     </div>
 
@@ -64,7 +64,7 @@
                 </div>
 
                 <!-- Visual -->
-                <div class="hidden-md relative">
+                <div class="desktop-only relative">
                     <!-- Headshot Desktop -->
                     <div class="absolute z-20" style="top: -3rem; left: -3rem;">
                         <img src="images/bjbeier.jpg" alt="BJ Beier" class="rounded-full border-4 shadow-xl object-cover" style="width: 120px; height: 120px; transform: rotate(-6deg);">
@@ -83,7 +83,7 @@
                                 <span style="color: var(--terminal-green);">bj@home-lab:~$</span> neofetch
                             </div>
                             <div class="flex gap-4">
-                                <div class="text-accent font-bold hidden-md block-md">
+                                <div class="text-accent font-bold">
 <!-- ASCII Art -->
 <pre style="line-height: 1; font-size: 10px;">
 .----------------.
@@ -168,7 +168,7 @@
                     <h2 style="font-size: 2rem; font-weight: 700;">Projects & Lab</h2>
                     <p class="text-muted">Current experiments and past ventures.</p>
                 </div>
-                <a href="https://github.com/bjbeier" target="_blank" class="hidden-md text-accent font-mono flex items-center" style="margin-top: 1rem;">
+                <a href="https://github.com/bjbeier" target="_blank" class="desktop-only text-accent font-mono flex items-center" style="margin-top: 1rem;">
                     View GitHub Activity <i data-lucide="arrow-up-right" style="width: 1rem; margin-left: 0.5rem;"></i>
                 </a>
             </div>
