@@ -19,7 +19,7 @@
 
         /* Default Light Theme Variables */
         :root {
-            --color-bg: #f8fafc;       /* Slate 50 */
+            --color-bg: #f8fafc;       /* Slate 50 (Off-white body background) */
             --color-text-main: #0f172a;    /* Slate 900 */
             --color-text-muted: #64748b;   /* Slate 500 */
             --color-accent: #0284c7;       /* Sky 600 */
@@ -162,8 +162,8 @@
             </div>
         </section>
 
-        <!-- Stack Section -->
-        <section id="stack" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-b border-slate-100 dark:border-slate-800">
+        <!-- Stack Section (bg-slate-100 in light mode) -->
+        <section id="stack" class="py-20 bg-slate-100 dark:bg-slate-950 border-t border-b border-slate-200 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-4">The Stack & Interests</h2>
@@ -172,7 +172,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Card 1 -->
-                    <div class="bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 dark:hover:border-sky-400">
+                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
                         <div class="flex justify-between mb-4">
                             <i data-lucide="server" class="text-accent w-8 h-8"></i>
                             <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Infra</span>
@@ -181,7 +181,7 @@
                         <p class="text-sm text-muted">Tinkering with Proxmox, Docker containers, and minimalist distros to test new ideas.</p>
                     </div>
                     <!-- Card 2 -->
-                    <div class="bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 dark:hover:border-sky-400">
+                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
                         <div class="flex justify-between mb-4">
                             <i data-lucide="home" class="text-accent w-8 h-8"></i>
                             <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">IoT</span>
@@ -190,7 +190,7 @@
                         <p class="text-sm text-muted">Home Assistant setups that actually help (when I'm not breaking them). Practical dad-tech.</p>
                     </div>
                     <!-- Card 3 -->
-                    <div class="bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 dark:hover:border-sky-400">
+                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
                         <div class="flex justify-between mb-4">
                             <i data-lucide="briefcase" class="text-accent w-8 h-8"></i>
                             <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Work</span>
@@ -199,7 +199,7 @@
                         <p class="text-sm text-muted">CIO at Guardian Savings Bank. Merging financial security with modern innovation.</p>
                     </div>
                     <!-- Card 4 -->
-                    <div class="bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 dark:hover:border-sky-400">
+                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
                         <div class="flex justify-between mb-4">
                             <i data-lucide="smartphone" class="text-accent w-8 h-8"></i>
                             <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Mobile</span>
@@ -225,13 +225,14 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project 1 -->
-                    <div class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl">
+                    <!-- Project 1 (ACTIVE tag changed to white text on blue background for contrast) -->
+                    <div class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl bg-white dark:bg-slate-900">
                         <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('images/circuit-board-large.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900/90 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-slate-900/90 to-transparent"></div>
                         
                         <div class="relative z-10 p-8 flex flex-col h-full justify-end">
-                            <span class="font-mono text-xs font-bold bg-terminal-green text-black px-2 py-1 rounded self-start mb-2">ACTIVE</span>
+                            <!-- UPDATED: bg-sky-600 text-white for maximum contrast -->
+                            <span class="font-mono text-xs font-bold bg-sky-600 text-white px-2 py-1 rounded self-start mb-2">ACTIVE</span>
                             <h3 class="text-2xl font-bold mb-2">Home Lab Refactor</h3>
                             <p class="text-muted text-sm mb-4">Shift from heavy VMs to lightweight Docker containers. Learning DevOps skills for enterprise architecture.</p>
                             <div class="flex gap-4 font-mono text-xs text-muted">
@@ -240,13 +241,14 @@
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
-                    <a href="https://bluedroidtech.com" target="_blank" class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl hover:border-sky-400">
+                    <!-- Project 2 (ACTIVE tag changed to white text on blue background for contrast) -->
+                    <a href="https://bluedroidtech.com" target="_blank" class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl hover:border-sky-400 bg-white dark:bg-slate-900">
                          <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('images/bdt.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900/90 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-slate-900/90 to-transparent"></div>
                         
                         <div class="relative z-10 p-8 flex flex-col h-full justify-end">
-                            <span class="font-mono text-xs font-bold bg-terminal-green text-black px-2 py-1 rounded self-start mb-2">ACTIVE</span>
+                            <!-- UPDATED: bg-sky-600 text-white for maximum contrast -->
+                            <span class="font-mono text-xs font-bold bg-sky-600 text-white px-2 py-1 rounded self-start mb-2">ACTIVE</span>
                             <h3 class="text-2xl font-bold mb-2 flex items-center">Blue Droid Technologies <i data-lucide="external-link" class="w-4 h-4 ml-2"></i></h3>
                             <p class="text-muted text-sm mb-4">Small Business venture focused on making technology easy and accessible. "Support Made Simple".</p>
                              <div class="flex gap-4 font-mono text-xs text-muted">
@@ -258,14 +260,14 @@
             </div>
         </section>
 
-        <!-- Network Section -->
-        <section id="network" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
+        <!-- Network Section (bg-slate-100 in light mode) -->
+        <section id="network" class="py-20 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-3xl font-bold mb-12">The Network</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- TabGeeks -->
-                    <a href="https://tabgeeks.com" target="_blank" class="flex items-start gap-4 p-6 bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 hover:border-sky-400">
+                    <a href="https://tabgeeks.com" target="_blank" class="flex items-start gap-4 p-6 bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 hover:border-sky-400">
                         <img src="images/tabgeeks.png" alt="TabGeeks" class="w-12 h-12 object-contain bg-white p-1 rounded-lg">
                         <div>
                             <h3 class="text-xl font-bold">TABGeeks</h3>
@@ -274,7 +276,7 @@
                     </a>
                     
                     <!-- TechnoTim -->
-                    <a href="https://technotim.live/" target="_blank" class="flex items-start gap-4 p-6 bg-white/50 backdrop-blur-md border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:bg-slate-800/70 dark:border-slate-700 hover:border-sky-400">
+                    <a href="https://technotim.live/" target="_blank" class="flex items-start gap-4 p-6 bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 hover:border-sky-400">
                          <img src="images/technotim.jpg" alt="TechnoTim" class="w-12 h-12 object-cover rounded-lg">
                         <div>
                             <h3 class="text-xl font-bold">TechnoTim</h3>
@@ -324,7 +326,8 @@
             const networkLink = getLinkPath('#network');
 
             return `
-            <nav class="navbar fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 shadow-md border-b border-slate-200 dark:border-slate-700 h-16 flex items-center">
+            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
+            <nav class="navbar fixed top-0 w-full z-50 bg-slate-50/90 dark:bg-slate-900/80 shadow-md border-b border-slate-200 dark:border-slate-700 h-16 flex items-center">
                 <div class="max-w-7xl mx-auto px-6 flex justify-between items-center w-full">
                     <!-- Logo -->
                     <a href="index.html" class="font-mono text-xl font-bold">
@@ -359,7 +362,7 @@
                 </div>
 
                 <!-- Mobile Menu -->
-                <div id="mobile-menu" class="absolute top-16 left-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-xl flex-col p-4 space-y-3 hidden md:hidden">
+                <div id="mobile-menu" class="absolute top-16 left-0 w-full bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-xl flex-col p-4 space-y-3 hidden md:hidden">
                     <a href="${aboutLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About</a>
                     <a href="${stackLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The Stack</a>
                     <a href="${projectsLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Projects</a>
@@ -373,7 +376,8 @@
         // Footer HTML Generator
         function getFooterHTML() {
             return `
-            <footer class="mt-auto bg-white/80 dark:bg-slate-900/80 border-t border-slate-200 dark:border-slate-700 py-16">
+            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
+            <footer class="mt-auto bg-slate-50/90 dark:bg-slate-900/80 border-t border-slate-200 dark:border-slate-700 py-16">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
                         <div class="text-center md:text-left">
