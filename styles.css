@@ -1,34 +1,333 @@
-/* Custom Fonts Import */
+/* --- Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap');
 
-/* Custom Utilities */
+/* --- CSS Variables (Theming) --- */
+:root {
+    /* Light Mode Defaults */
+    --bg-body: #f8fafc;       /* Slate 50 */
+    --bg-card: rgba(255, 255, 255, 0.8);
+    --bg-nav: rgba(255, 255, 255, 0.9);
+    --text-main: #0f172a;     /* Slate 900 */
+    --text-muted: #64748b;    /* Slate 500 */
+    --text-inverse: #ffffff;
+    --accent: #0284c7;        /* Sky 600 */
+    --accent-hover: #0369a1;  /* Sky 700 */
+    --border: #e2e8f0;        /* Slate 200 */
+    --terminal-green: #22c55e;
+    
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+html.dark {
+    /* Dark Mode Overrides */
+    --bg-body: #0f172a;       /* Slate 900 */
+    --bg-card: rgba(30, 41, 59, 0.7); /* Slate 800/70 */
+    --bg-nav: rgba(15, 23, 42, 0.9);
+    --text-main: #f1f5f9;     /* Slate 100 */
+    --text-muted: #94a3b8;    /* Slate 400 */
+    --text-inverse: #0f172a;
+    --accent: #38bdf8;        /* Sky 400 */
+    --accent-hover: #7dd3fc;  /* Sky 300 */
+    --border: rgba(255, 255, 255, 0.1);
+    
+    --shadow-card: none;
+}
+
+/* --- Base Reset & Typography --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: color 0.2s; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* Fonts */
+.font-mono { font-family: 'Fira Code', monospace; }
+.text-accent { color: var(--accent); }
+.text-muted { color: var(--text-muted); }
+.font-bold { font-weight: 700; }
+.font-light { font-weight: 300; }
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-8 { gap: 2rem; }
+
+.grid { display: grid; gap: 2rem; }
+.grid-cols-1 { grid-template-columns: 1fr; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .md\:grid-cols-2 { grid-template-columns: 1fr; }
+    .md\:grid-cols-3 { grid-template-columns: 1fr; }
+    .md\:grid-cols-4 { grid-template-columns: 1fr 1fr; } /* 2 cols on tablet/mobile */
+    .hidden-md { display: none !important; }
+    .block-md { display: block !important; }
+}
+@media (min-width: 769px) {
+    .hidden-desktop { display: none !important; }
+}
+
+/* --- Components --- */
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--bg-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    height: 4rem; /* 64px */
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.nav-logo {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--accent);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.theme-toggle:hover {
+    background-color: var(--border);
+    color: var(--text-main);
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-main);
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 4rem; /* Height of nav */
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu.hidden { display: none; }
+
+/* Hero Section */
+.hero-section {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-family: 'Fira Code', monospace;
+    background: rgba(56, 189, 248, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+}
+@media (min-width: 768px) { .hero-title { font-size: 4.5rem; } }
+
+.gradient-text {
+    background: linear-gradient(to right, var(--accent), #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Typewriter */
+.typewriter-container {
+    height: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.5rem;
+    color: var(--terminal-green);
+}
 .typing-cursor::after {
     content: '|';
     animation: blink 1s step-start infinite;
 }
+@keyframes blink { 50% { opacity: 0; } }
 
-@keyframes blink {
-    50% { opacity: 0; }
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+.btn-primary {
+    background-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+}
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+.btn-outline {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+}
+.btn-outline:hover {
+    border-color: var(--text-main);
+    color: var(--text-main);
+    background-color: var(--border);
 }
 
-.terminal-window {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-}
-
-/* Glass Card - Updated for Light/Dark Mode Support via standard CSS classes handling */
+/* Glass Cards */
 .glass-card {
-    /* Default (Light Mode) */
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--bg-card);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.glass-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
 }
 
-/* Tailwind's dark class needs to trigger this. 
-   We use the :where(.dark ...) or just .dark .glass-card pattern 
-*/
-.dark .glass-card {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: none;
+/* Terminal Window */
+.terminal-window {
+    background: #1e1e1e;
+    border-radius: 0.5rem;
+    border: 1px solid #333;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
 }
+.terminal-header {
+    background: #2d2d2d;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+}
+.terminal-dots { display: flex; gap: 0.5rem; margin-right: 1rem; }
+.dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; }
+.red { background: #ef4444; }
+.yellow { background: #eab308; }
+.green { background: #22c55e; }
+.terminal-title { color: #94a3b8; font-size: 0.75rem; flex: 1; text-align: center; }
+.terminal-body { padding: 1.5rem; color: #e2e8f0; font-size: 0.875rem; }
+
+/* Section Spacing */
+.section-py { padding-top: 5rem; padding-bottom: 5rem; }
+.bg-subtle { background-color: rgba(0,0,0,0.02); }
+html.dark .bg-subtle { background-color: rgba(255,255,255,0.02); }
+
+/* Footer */
+.site-footer {
+    background-color: var(--bg-nav);
+    border-top: 1px solid var(--border);
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+}
+
+/* Utilities */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 1rem; }
+.rounded-full { border-radius: 9999px; }
+.border-4 { border-width: 4px; border-style: solid; border-color: var(--bg-body); }
+.shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.object-cover { object-fit: cover; }
+.sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.bg-cover { background-size: cover; }
+.bg-center { background-position: center; }

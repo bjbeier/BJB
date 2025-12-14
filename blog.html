@@ -1,124 +1,78 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Insights | BJ Beier</title>
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
-
-    <!-- External Styles -->
+    
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Tailwind Configuration (MANDATORY: MUST BE DEFINED BEFORE CDN) -->
-    <script>
-        window.tailwindConfig = {
-            darkMode: 'class', // Enable class-based dark mode logic
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#0f172a', // Slate 900
-                            accent: '#38bdf8', // Sky 400
-                            terminal: '#22c55e', // Green 500
-                        }
-                    }
-                }
-            }
-        };
-    </script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Scripts -->
     <script src="scripts.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    
 </head>
-<body class="bg-slate-50 dark:bg-brand-dark text-slate-700 dark:text-slate-300 font-sans antialiased transition-colors duration-300">
+<body>
 
-    <!-- Nav Placeholder -->
     <div id="nav-placeholder"></div>
 
-    <!-- Blog Header -->
-    <header class="pt-32 pb-12 px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Digital Insights</h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-            A collection of thoughts on technology, leadership, and the occasional home automation disaster.
-        </p>
+    <header class="section-py text-center">
+        <div class="container">
+            <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem;">Digital Insights</h1>
+            <p class="text-muted" style="max-width: 600px; margin: 0 auto;">
+                A collection of thoughts on technology, leadership, and the occasional home automation disaster.
+            </p>
+        </div>
     </header>
 
-    <!-- Blog Posts Container -->
-    <main class="max-w-4xl mx-auto px-4 pb-20 space-y-12">
-
-        <!-- Post 1 -->
-        <article id="linux-docker" class="glass-card p-8 rounded-2xl hover:border-blue-400 dark:hover:border-brand-accent/30 transition-colors">
-            <header class="mb-6">
-                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
-                    <span class="text-blue-600 dark:text-brand-accent">Sep 26, 2024</span>
-                    <span>#Linux #Docker</span>
+    <main class="container" style="padding-bottom: 5rem; max-width: 900px;">
+        <div class="grid grid-cols-1">
+            
+            <!-- Post 1 -->
+            <article class="glass-card">
+                <header class="mb-4">
+                    <div class="font-mono text-xs text-muted mb-2">
+                        <span class="text-accent">Sep 26, 2024</span> #Linux #Docker
+                    </div>
+                    <h2 style="font-size: 1.75rem; font-weight: 700;">My Journey into Linux and Docker</h2>
+                </header>
+                <div class="text-muted" style="line-height: 1.8;">
+                    <p class="mb-4">Working in tech for half of my life and tinkering in tech for almost all of it, I've dabbled in a little bit of everything. Recently, I decided it was time to move my home lab away from standalone heavy VMs and into the world of containerization.</p>
+                    <p class="mb-4"><strong>Why Docker?</strong><br>The efficiency gains were immediate. Instead of dedicating 4GB of RAM to a VM running a simple DNS blocker, I could run Pi-Hole in a container using a fraction of the resources.</p>
+                    <p>The learning curve wasn't flat—understanding volumes and networking took a weekend of "trial by fire"—but the result is a portable, clean infrastructure defined entirely in code (YAML).</p>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">My Journey into Linux and Docker</h2>
-            </header>
-            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
-                <p>
-                    Working in tech for half of my life and tinkering in tech for almost all of it, I've dabbled in a little bit of everything. Recently, I decided it was time to move my home lab away from standalone heavy VMs and into the world of containerization.
-                </p>
-                <p>
-                    <strong>Why Docker?</strong><br>
-                    The efficiency gains were immediate. Instead of dedicating 4GB of RAM to a VM running a simple DNS blocker, I could run Pi-Hole in a container using a fraction of the resources.
-                </p>
-                <p>
-                    The learning curve wasn't flat—understanding volumes and networking took a weekend of "trial by fire"—but the result is a portable, clean infrastructure defined entirely in code (YAML).
-                </p>
-            </div>
-        </article>
+            </article>
 
-        <!-- Post 2 -->
-        <article id="digital-refresh" class="glass-card p-8 rounded-2xl hover:border-blue-400 dark:hover:border-brand-accent/30 transition-colors">
-            <header class="mb-6">
-                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
-                    <span class="text-blue-600 dark:text-brand-accent">Jan 5, 2022</span>
-                    <span>#Personal #Web</span>
+            <!-- Post 2 -->
+            <article class="glass-card">
+                <header class="mb-4">
+                    <div class="font-mono text-xs text-muted mb-2">
+                        <span class="text-accent">Jan 5, 2022</span> #Personal #Web
+                    </div>
+                    <h2 style="font-size: 1.75rem; font-weight: 700;">Time For A Digital Refresh</h2>
+                </header>
+                <div class="text-muted" style="line-height: 1.8;">
+                    <p class="mb-4">A number of years ago, I purchased my own domain name. It was the first step in claiming my digital identity. Now it's time to update it for the modern web.</p>
+                    <p>This new site represents a shift from "just a blog" to a digital garden—a place where my professional work and personal hobbies can coexist. No heavy CMS, just clean code and fast load times.</p>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Time For A Digital Refresh</h2>
-            </header>
-            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
-                <p>
-                    A number of years ago, I purchased my own domain name. It was the first step in claiming my digital identity. Now it's time to update it for the modern web.
-                </p>
-                <p>
-                    This new site represents a shift from "just a blog" to a digital garden—a place where my professional work and personal hobbies can coexist. No heavy CMS, just clean code and fast load times.
-                </p>
-            </div>
-        </article>
+            </article>
 
-        <!-- Post 3 -->
-        <article id="best-self" class="glass-card p-8 rounded-2xl hover:border-blue-400 dark:hover:border-brand-accent/30 transition-colors">
-            <header class="mb-6">
-                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
-                    <span class="text-blue-600 dark:text-brand-accent">Dec 1, 2018</span>
-                    <span>#Career #Leadership</span>
+            <!-- Post 3 -->
+            <article class="glass-card">
+                <header class="mb-4">
+                    <div class="font-mono text-xs text-muted mb-2">
+                        <span class="text-accent">Dec 1, 2018</span> #Career #Leadership
+                    </div>
+                    <h2 style="font-size: 1.75rem; font-weight: 700;">Be Your Best Self – Show Your Best Self</h2>
+                </header>
+                <div class="text-muted" style="line-height: 1.8;">
+                    <p class="mb-4">This post is a follow up to “Be Your Best Self – Tips For Any Employee”. Navigating the corporate ladder while staying true to your skills is a balancing act.</p>
+                    <p>The core takeaway? Authenticity wins. Whether you are in the server room or the boardroom, people respect consistency. Don't hide your "geek" side—leverage it as your unique advantage.</p>
                 </div>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">Be Your Best Self – Show Your Best Self</h2>
-            </header>
-            <div class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed space-y-4">
-                <p>
-                    This post is a follow up to “Be Your Best Self – Tips For Any Employee”. Navigating the corporate ladder while staying true to your skills is a balancing act.
-                </p>
-                <p>
-                    The core takeaway? Authenticity wins. Whether you are in the server room or the boardroom, people respect consistency. Don't hide your "geek" side—leverage it as your unique advantage.
-                </p>
-            </div>
-        </article>
+            </article>
 
+        </div>
     </main>
 
-    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
 </body>
