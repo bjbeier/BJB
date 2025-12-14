@@ -1,27 +1,4 @@
 /**
- * Tailwind Configuration
- * Must be defined before Tailwind CDN loads, or accessible when it initializes.
- */
-window.tailwindConfig = {
-    darkMode: 'class', // Enable class-based dark mode logic
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                mono: ['Fira Code', 'monospace'],
-            },
-            colors: {
-                brand: {
-                    dark: '#0f172a', // Slate 900
-                    accent: '#38bdf8', // Sky 400
-                    terminal: '#22c55e', // Green 500
-                }
-            }
-        }
-    }
-};
-
-/**
  * Reusable Components (Nav & Footer)
  */
 
@@ -161,6 +138,10 @@ function toggleTheme() {
         document.documentElement.classList.add('dark');
         localStorage.theme = 'dark';
     }
+    // Re-render icons to ensure color change is applied correctly
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 }
 
 // Function to inject components and initialize interactive elements
@@ -216,15 +197,15 @@ function initSite() {
         }
     }
 
-    // 3. Initialize Icons
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-
-    // 4. Initialize Typewriter
+    // 3. Initialize Typewriter
     const typeWriterElement = document.getElementById('typewriter');
     if (typeWriterElement) {
         initTypewriter(typeWriterElement);
+    }
+
+    // 4. Initialize Icons (MUST run after DOM content injection)
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
     }
 }
 
