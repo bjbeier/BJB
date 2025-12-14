@@ -8,54 +8,26 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    <!-- Fonts & CSS (Same as Index) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- External Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Scripts -->
+    <script src="scripts.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    
+    <!-- Tailwind CSS (Loads config from scripts.js window object) -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#0f172a',
-                            accent: '#38bdf8',
-                            terminal: '#22c55e',
-                        }
-                    }
-                }
-            }
+        // Apply the config defined in scripts.js to the tailwind object before it loads
+        if(window.tailwindConfig) {
+            tailwind = { config: window.tailwindConfig };
         }
     </script>
-    <style>
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-brand-dark text-slate-300 font-sans antialiased">
 
-    <!-- Navigation (Simplified for Blog) -->
-    <nav class="fixed w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6">
-            <div class="flex items-center justify-between h-16">
-                <a href="index.html" class="flex items-center text-slate-400 hover:text-white transition-colors">
-                    <i data-lucide="arrow-left" class="mr-2 w-5 h-5"></i>
-                    Back to Home
-                </a>
-                <span class="font-mono font-bold text-white"><span class="text-brand-accent">/</span>insights</span>
-            </div>
-        </div>
-    </nav>
+    <!-- Nav Placeholder -->
+    <div id="nav-placeholder"></div>
 
     <!-- Blog Header -->
     <header class="pt-32 pb-12 px-4 text-center">
@@ -131,13 +103,8 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center py-8 border-t border-slate-800 text-slate-500 text-sm">
-        <p>&copy; 2025 BJ Beier. All rights reserved.</p>
-    </footer>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 </html>
