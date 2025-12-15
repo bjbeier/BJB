@@ -1,541 +1,516 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BJ Beier | CIO & Tech Enthusiast</title>
-    <meta name="description" content="Personal site of BJ Beier - CIO, Tech Enthusiast, and Problem Solver.">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta name="description" content="Personal site of BJ Beier - Chief Information Officer, Tech Enthusiast, and Problem Solver.">
     
-    <!-- Tailwind CSS CDN -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Fonts: Inter (Clean Sans) & Fira Code (Tech/Monospace) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (No build step required) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
+    <!-- Icons (Lucide) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Style Block for CSS Variables and Keyframes -->
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', // Slate 900
+                            accent: '#38bdf8', // Sky 400
+                            terminal: '#22c55e', // Green 500
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap');
-
-        /* Default Light Theme Variables */
-        :root {
-            --color-bg: #f8fafc;       /* Slate 50 (Off-white body background) */
-            --color-text-main: #0f172a;    /* Slate 900 */
-            --color-text-muted: #64748b;   /* Slate 500 */
-            --color-accent: #0284c7;       /* Sky 600 */
-            --color-terminal-green: #22c55e;
+        /* Custom Utilities */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
         }
-
-        /* Dark Theme Variables */
-        html.dark {
-            --color-bg: #0f172a;       /* Slate 900 */
-            --color-text-main: #f1f5f9;    /* Slate 100 */
-            --color-text-muted: #94a3b8;   /* Slate 400 */
-            --color-accent: #38bdf8;       /* Sky 400 */
+        @keyframes blink {
+            50% { opacity: 0; }
         }
-        
-        /* Apply Base Styles and Fonts */
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            min-height: 100vh; /* Full viewport height */
-            display: flex;
-            flex-direction: column;
+        .terminal-window {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
         }
-
-        /* Custom Class using variables */
-        .text-accent { color: var(--color-accent); }
-        .text-muted { color: var(--color-text-muted); }
-        .font-mono { font-family: 'Fira Code', monospace; }
-        .terminal-green { color: var(--color-terminal-green); }
-
-        /* Animations */
-        @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        .typing-cursor::after { content: '|'; animation: blink 1s step-start infinite; }
-        
-        /* Navbar specific blur background for better readability */
-        .navbar { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
-<body class="selection:bg-sky-200 selection:text-slate-900 dark:selection:bg-sky-800 dark:selection:text-white">
+<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-white">
 
-    <div id="nav-placeholder"></div>
-    <main>
-        <!-- Hero Section -->
-        <section id="about" class="pt-32 pb-20 relative overflow-hidden">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <!-- Text Block -->
-                    <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                        <div class="inline-flex items-center px-3 py-1 mb-6 rounded-full border border-sky-600 dark:border-sky-400 text-xs font-mono text-accent bg-sky-100/30 dark:bg-sky-900/20">
-                            <span class="relative flex h-2 w-2 mr-2">
-                              <span class="absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" style="animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
-                              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-                            </span>
-                            System Status: Online
-                        </div>
-                        
-                        <!-- Mobile Headshot -->
-                        <div class="md:hidden flex justify-center mb-8">
-                             <img src="images/bjbeier.jpg" alt="BJ Beier" class="rounded-full border-4 border-slate-50 dark:border-slate-900 shadow-xl object-cover ring-4 ring-sky-500/50" style="width: 150px; height: 150px;">
-                        </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-mono text-xl font-bold text-white tracking-tighter">
+                        <span class="text-brand-accent">&lt;</span>BJ.Beier<span class="text-brand-accent">/&gt;</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#stack" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">The Stack</a>
+                        <a href="#projects" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="blog.html" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Insights (Blog)</a>
+                        <a href="#network" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">The Network</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                        <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-4">
-                            Hi, I'm BJ.<br>
-                            <span class="bg-gradient-to-r from-sky-500 to-blue-500 text-transparent bg-clip-text">I learn & lead</span>
-                        </h1>
-                        
-                        <div class="h-8 mb-8 font-mono text-xl lg:text-2xl terminal-green">
-                            <span id="typewriter" class="typing-cursor"></span>
-                        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="hidden md:hidden bg-brand-dark border-b border-white/10" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#stack" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">The Stack</a>
+                <a href="#projects" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="blog.html" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">Insights (Blog)</a>
+                <a href="#network" class="text-gray-300 hover:text-white hover:bg-gray-700 block px-3 py-2 rounded-md text-base font-medium">The Network</a>
+            </div>
+        </div>
+    </nav>
 
-                        <p class="text-lg text-muted mb-10 max-w-xl">
-                            Currently serving as <strong>Chief Information Officer</strong> at Guardian Savings Bank. 
-                            Bridging the gap between enterprise finance strategy and the sheer joy of tinkering with 
-                            Linux, Docker, and Home Automation.
-                        </p>
+    <!-- Hero Section -->
+    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-mono mb-6">
+                        <span class="relative flex h-2 w-2 mr-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                        </span>
+                        System Status: Online
+                    </div>
+                    
+                    <!-- Headshot Mobile (Visible only on small screens) -->
+                    <div class="lg:hidden mb-6 flex justify-center">
+                         <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-32 h-32 rounded-full border-4 border-slate-700 shadow-xl object-cover">
+                    </div>
 
-                        <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start">
-                            <a href="blog.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-sky-600 hover:bg-sky-700 shadow-lg shadow-sky-500/50 transition duration-150 ease-in-out">
-                                Read My Thoughts <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                            </a>
-                            <div class="flex gap-4 justify-center sm:justify-start">
-                                <a href="https://linkedin.com/in/bjbeier" target="_blank" class="inline-flex items-center justify-center w-12 h-12 border border-slate-400 dark:border-slate-600 rounded-lg text-muted hover:text-sky-500 hover:border-sky-500 transition duration-150" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                                <a href="mailto:contact@bjbeier.com" class="inline-flex items-center justify-center w-12 h-12 border border-slate-400 dark:border-slate-600 rounded-lg text-muted hover:text-sky-500 hover:border-sky-500 transition duration-150" aria-label="Email"><i data-lucide="mail"></i></a>
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+                        Hi, I'm BJ.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-600">
+                            I learn & lead
+                        </span>
+                    </h1>
+                    
+                    <div class="h-8 mb-8">
+                        <span id="typewriter" class="font-mono text-xl sm:text-2xl text-brand-terminal typing-cursor"></span>
+                    </div>
+
+                    <p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+                        Currently serving as <strong>Chief Information Officer</strong> at Guardian Savings Bank. 
+                        Bridging the gap between enterprise finance strategy and the sheer joy of tinkering with 
+                        Linux, Docker, and Home Automation. 
+                    </p>
+
+                    <!-- Mobile Terminal Window (Visible on Mobile, Hidden on Desktop) -->
+                    <div class="block lg:hidden text-left mb-10 mx-auto max-w-md">
+                         <div class="terminal-window rounded-lg bg-[#1e1e1e] border border-slate-700 overflow-hidden relative z-10">
+                            <div class="flex items-center px-4 py-2 bg-[#2d2d2d] border-b border-slate-700">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <div class="flex-1 text-center text-xs font-mono text-slate-400">bj@mobile-term:~</div>
+                            </div>
+                            <div class="p-4 font-mono text-xs sm:text-sm">
+                                <div class="mb-2">
+                                    <span class="text-green-400">bj@mobile:~$</span> neofetch
+                                </div>
+                                <div class="flex gap-2 text-slate-300">
+                                    <div class="text-brand-accent font-bold">
+<pre class="leading-none text-[6px] sm:text-[8px] text-blue-400">
+.----------.
+|   _.._   |
+|  / \/ \  |
+| '------' |
+'----------'
+</pre>
+                                    </div>
+                                    <div class="pl-1">
+                                        <p><span class="text-brand-accent">OS:</span> Windows/Ubuntu</p>
+                                        <p><span class="text-brand-accent">Role:</span> CIO</p>
+                                        <p><span class="text-brand-accent">Shell:</span> bash</p>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <span class="text-green-400">bj@mobile:~$</span> <span class="animate-pulse">_</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Visual Block -->
-                    <div class="hidden md:block relative pt-12">
-                        <!-- Headshot Desktop -->
-                        <div class="absolute z-20 top-0 left-0">
-                            <img src="images/bjbeier.jpg" alt="BJ Beier" class="rounded-full border-4 border-white dark:border-slate-900 shadow-xl object-cover ring-4 ring-sky-500/50" style="width: 120px; height: 120px; transform: rotate(-6deg);">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                        <a href="blog.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 w-full sm:w-auto">
+                            Read My Thoughts
+                            <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+                        </a>
+                        <div class="flex gap-4">
+                            <a href="https://linkedin.com/in/bjbeier" target="_blank" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                            <a href="mailto:contact@bjbeier.com" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all" title="Email Me">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </a>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Terminal Window -->
-                        <div class="bg-[#1e1e1e] rounded-xl border border-[#333] shadow-2xl overflow-hidden font-mono text-sm">
-                            <div class="bg-[#2d2d2d] px-4 py-2 border-b border-[#333] flex items-center">
-                                <div class="flex space-x-2 mr-4">
-                                    <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                </div>
-                                <div class="text-slate-400 text-xs flex-1 text-center">bj@home-lab:~</div>
+                <!-- Visual/Image Desktop (Hidden on Mobile) -->
+                <div class="lg:col-span-5 relative hidden lg:block">
+                    <!-- Decorative blob -->
+                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-brand-terminal rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+                    <!-- Headshot Desktop Floating -->
+                     <div class="absolute -top-12 -left-12 z-20">
+                        <img src="images/bjbeier.jpg" alt="BJ Beier" class="w-24 h-24 rounded-full border-4 border-brand-dark shadow-2xl object-cover transform -rotate-6 hover:rotate-0 transition-transform duration-300">
+                    </div>
+
+                    <!-- Terminal Window Mockup -->
+                    <div class="terminal-window rounded-lg bg-[#1e1e1e] border border-slate-700 overflow-hidden relative z-10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <div class="flex items-center px-4 py-2 bg-[#2d2d2d] border-b border-slate-700">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
                             </div>
-                            <div class="p-6 text-slate-200">
-                                <div class="mb-4">
-                                    <span class="terminal-green">bj@home-lab:~$</span> neofetch
-                                </div>
-                                <div class="flex gap-8">
-                                    <div class="text-accent font-bold">
-    <!-- ASCII Art Placeholder -->
-    <pre style="line-height: 1; font-size: 10px;">
+                            <div class="flex-1 text-center text-xs font-mono text-slate-400">bj@home-lab:~</div>
+                        </div>
+                        <div class="p-6 font-mono text-sm">
+                            <div class="mb-4">
+                                <span class="text-green-400">bj@home-lab:~$</span> neofetch
+                            </div>
+                            <div class="flex gap-4 text-slate-300">
+                                <div class="text-brand-accent hidden sm:block font-bold">
+<!-- Custom Monitor ASCII Art -->
+<pre class="leading-none text-[8px] sm:text-[10px] text-blue-400">
 .----------------.
 | [ / ]  [ X ]   |
 |                |
 |  bj@home-lab   |
 |----------------|
 '----------------'
-    </pre>
-                                    </div>
-                                    <div>
-                                        <p><span class="text-accent">OS:</span> Windows / Ubuntu</p>
-                                        <p><span class="text-accent">Role:</span> CIO / Leader</p>
-                                        <p><span class="text-accent">Shell:</span> bash</p>
-                                        <p><span class="text-accent">Uptime:</span> 20+ Years</p>
-                                        <p><span class="text-accent">Status:</span> Geek Mode</p>
-                                    </div>
+</pre>
                                 </div>
-                                <div class="mt-4">
-                                    <span class="terminal-green">bj@home-lab:~$</span> <span style="animation: blink 1s infinite;">_</span>
+                                <div class="pl-2">
+                                    <p><span class="text-brand-accent">OS:</span> Windows/Ubuntu</p>
+                                    <p><span class="text-brand-accent">Role:</span> CIO / Leader</p>
+                                    <p><span class="text-brand-accent">Shell:</span> bash</p>
+                                    <p><span class="text-brand-accent">Uptime:</span> 20+ Years</p>
+                                    <p><span class="text-brand-accent">Interests:</span> Family, Tech</p>
+                                    <p><span class="text-brand-accent">Status:</span> Geek Mode</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stack Section (bg-slate-100 in light mode) -->
-        <section id="stack" class="py-20 bg-slate-100 dark:bg-slate-950 border-t border-b border-slate-200 dark:border-slate-800">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold mb-4">The Stack & Interests</h2>
-                    <p class="text-lg text-muted max-w-3xl mx-auto">From enterprise boardrooms to my personal home lab rack, these are the tools I interact with daily.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Card 1 -->
-                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                        <div class="flex justify-between mb-4">
-                            <i data-lucide="server" class="text-accent w-8 h-8"></i>
-                            <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Infra</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Linux & Virtualization</h3>
-                        <p class="text-sm text-muted">Tinkering with Proxmox, Docker containers, and minimalist distros to test new ideas.</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                        <div class="flex justify-between mb-4">
-                            <i data-lucide="home" class="text-accent w-8 h-8"></i>
-                            <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">IoT</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Home Automation</h3>
-                        <p class="text-sm text-muted">Home Assistant setups that actually help (when I'm not breaking them). Practical dad-tech.</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                        <div class="flex justify-between mb-4">
-                            <i data-lucide="briefcase" class="text-accent w-8 h-8"></i>
-                            <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Work</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Leadership & Strategy</h3>
-                        <p class="text-sm text-muted">CIO at Guardian Savings Bank. Merging financial security with modern innovation.</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                        <div class="flex justify-between mb-4">
-                            <i data-lucide="smartphone" class="text-accent w-8 h-8"></i>
-                            <span class="text-xs font-mono text-muted bg-slate-100 dark:bg-slate-900 px-2 py-1 rounded">Mobile</span>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Android Ecosystem</h3>
-                        <p class="text-sm text-muted">Open source advocate. Using Android since v1. Customizing flows to optimize life.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-12">
-                    <div>
-                        <h2 class="text-3xl font-bold">Projects & Lab</h2>
-                        <p class="text-muted text-lg">Current experiments and past ventures.</p>
-                    </div>
-                    <a href="https://github.com/bjbeier" target="_blank" class="hidden md:flex text-accent font-mono items-center mt-4 md:mt-0 hover:text-sky-500 transition duration-150">
-                        View GitHub Activity <i data-lucide="arrow-up-right" class="w-4 h-4 ml-2"></i>
-                    </a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Project 1 (ACTIVE tag changed to white text on blue background for contrast) -->
-                    <div class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl bg-white dark:bg-slate-900">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('images/circuit-board-large.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-slate-900/90 to-transparent"></div>
-                        
-                        <div class="relative z-10 p-8 flex flex-col h-full justify-end">
-                            <!-- UPDATED: bg-sky-600 text-white for maximum contrast -->
-                            <span class="font-mono text-xs font-bold bg-sky-600 text-white px-2 py-1 rounded self-start mb-2">ACTIVE</span>
-                            <h3 class="text-2xl font-bold mb-2">Home Lab Refactor</h3>
-                            <p class="text-muted text-sm mb-4">Shift from heavy VMs to lightweight Docker containers. Learning DevOps skills for enterprise architecture.</p>
-                            <div class="flex gap-4 font-mono text-xs text-muted">
-                                <span>#Docker</span><span>#Nginx</span><span>#PiHole</span>
+                            <div class="mt-4">
+                                <span class="text-green-400">bj@home-lab:~$</span> <span class="animate-pulse">_</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Project 2 (ACTIVE tag changed to white text on blue background for contrast) -->
-                    <a href="https://bluedroidtech.com" target="_blank" class="relative overflow-hidden min-h-[350px] rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg transition-all duration-200 hover:scale-[1.01] hover:shadow-xl hover:border-sky-400 bg-white dark:bg-slate-900">
-                         <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('images/bdt.png');"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-slate-900/90 to-transparent"></div>
-                        
-                        <div class="relative z-10 p-8 flex flex-col h-full justify-end">
-                            <!-- UPDATED: bg-sky-600 text-white for maximum contrast -->
-                            <span class="font-mono text-xs font-bold bg-sky-600 text-white px-2 py-1 rounded self-start mb-2">ACTIVE</span>
-                            <h3 class="text-2xl font-bold mb-2 flex items-center">Blue Droid Technologies <i data-lucide="external-link" class="w-4 h-4 ml-2"></i></h3>
-                            <p class="text-muted text-sm mb-4">Small Business venture focused on making technology easy and accessible. "Support Made Simple".</p>
-                             <div class="flex gap-4 font-mono text-xs text-muted">
-                                <span>#Entrepreneurship</span><span>#SMB</span>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Network Section (bg-slate-100 in light mode) -->
-        <section id="network" class="py-20 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-3xl font-bold mb-12">The Network</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- TabGeeks -->
-                    <a href="https://tabgeeks.com" target="_blank" class="flex items-start gap-4 p-6 bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 hover:border-sky-400">
-                        <img src="images/tabgeeks.png" alt="TabGeeks" class="w-12 h-12 object-contain bg-white p-1 rounded-lg">
-                        <div>
-                            <h3 class="text-xl font-bold">TABGeeks</h3>
-                            <p class="text-sm text-muted mt-1">An independent network of shows and resources by IT Professionals, for IT Professionals.</p>
-                        </div>
-                    </a>
+    <!-- Tech Stack Section -->
+    <section id="stack" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">The Stack & Interests</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">
+                    From enterprise boardrooms to my personal home lab rack, these are the tools and technologies I interact with daily.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Stack Item 1 -->
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="server" class="w-8 h-8 text-blue-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Infra</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Linux & Virtualization</h3>
+                    <p class="text-sm text-slate-400">Tinkering with Proxmox, Docker containers, and minimalist distros to test new ideas.</p>
+                </div>
+
+                <!-- Stack Item 2 -->
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="home" class="w-8 h-8 text-green-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">IoT</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Home Automation</h3>
+                    <p class="text-sm text-slate-400">Home Assistant setups that actually help (when I'm not breaking them). Practical dad-tech.</p>
+                </div>
+
+                <!-- Stack Item 3 -->
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-purple-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Work</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Leadership & Strategy</h3>
+                    <p class="text-sm text-slate-400">CIO at Guardian Savings Bank. Merging financial security with modern innovation.</p>
+                </div>
+
+                <!-- Stack Item 4 -->
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <div class="flex items-center justify-between mb-4">
+                        <i data-lucide="smartphone" class="w-8 h-8 text-orange-400"></i>
+                        <span class="text-xs font-mono text-slate-500 bg-slate-900 px-2 py-1 rounded">Mobile</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Android Ecosystem</h3>
+                    <p class="text-sm text-slate-400">Open source advocate. Using Android since v1. Customizing flows to optimize life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects / Lab Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Projects & Lab</h2>
+                    <p class="text-slate-400">Current experiments and past ventures.</p>
+                </div>
+                <a href="https://github.com/bjbeier" target="_blank" class="hidden md:inline-flex items-center text-sm font-mono text-brand-accent hover:text-white transition-colors mt-4 md:mt-0">
+                    View GitHub Activity <i data-lucide="arrow-up-right" class="ml-2 w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="group relative rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 h-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-slate-900/30 opacity-90 z-10"></div>
+                    <!-- Home Lab Image Background -->
+                    <div class="absolute inset-0 bg-[url('images/circuit-board-large.png')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-60"></div>
                     
-                    <!-- TechnoTim -->
-                    <a href="https://technotim.live/" target="_blank" class="flex items-start gap-4 p-6 bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-xl dark:border-slate-700 hover:border-sky-400">
-                         <img src="images/technotim.jpg" alt="TechnoTim" class="w-12 h-12 object-cover rounded-lg">
-                        <div>
-                            <h3 class="text-xl font-bold">TechnoTim</h3>
-                            <p class="text-sm text-muted mt-1">Popular YouTube channel and community focused on Home Lab, containers, and self-hosting.</p>
+                    <div class="absolute bottom-0 left-0 p-8 z-20">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="px-2 py-1 text-xs font-bold text-slate-900 bg-green-400 rounded">ACTIVE</span>
                         </div>
-                    </a>
-
-                    <!-- Coming Soon -->
-                    <div class="flex flex-col items-center justify-center text-center p-6 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 opacity-60">
-                        <i data-lucide="plus" class="text-muted mb-2 w-6 h-6"></i>
-                        <span class="text-sm text-muted font-medium">More coming soon...</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Home Lab Refactor</h3>
+                        <p class="text-slate-300 mb-4">Migrating legacy services to a Dockerized environment. Focusing on self-hosted alternatives for privacy.</p>
+                        <ul class="flex space-x-4 text-slate-400 text-sm font-mono">
+                            <li>#Docker</li>
+                            <li>#Traefik</li>
+                            <li>#PiHole</li>
+                        </ul>
                     </div>
+                </div>
+
+                <!-- Project 2 (Status changed to ACTIVE) -->
+                <a href="https://bluedroidtech.com" target="_blank" class="block">
+                    <div class="group relative rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 h-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent opacity-90 z-10"></div>
+                        <!-- BDT Background Image -->
+                        <div class="absolute inset-0 bg-[url('images/bdt.png')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80"></div>
+                        
+                        <div class="absolute bottom-0 left-0 p-8 z-20">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <!-- UPDATED STATUS -->
+                                <span class="px-2 py-1 text-xs font-bold text-slate-900 bg-green-400 rounded">ACTIVE</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">Blue Droid Technologies <i data-lucide="external-link" class="inline w-4 h-4 ml-1"></i></h3>
+                            <p class="text-slate-300 mb-4">Small Business venture focused on making technology easy and accessible. "Support Made Simple".</p>
+                            <ul class="flex space-x-4 text-slate-400 text-sm font-mono">
+                                <li>#Entrepreneurship</li>
+                                <li>#SMB</li>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Network (Interesting Links) -->
+    <section id="network" class="py-20 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8">The Network</h2>
+            <p class="text-slate-400 mb-8 max-w-2xl">Communities, groups, and resources I find valuable.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Network Item 1 (TabGeeks with Image) -->
+                <a href="https://tabgeeks.com" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="flex-shrink-0">
+                            <img src="images/tabgeeks.png" alt="TabGeeks" class="w-16 h-16 rounded-md object-contain bg-white/10 p-2">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-brand-accent">TABGeeks</h3>
+                            <p class="text-sm text-slate-400 mt-1 line-clamp-2">A community for IT professionals in the non-profit and foundation space.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Placeholder for future items -->
+                <div class="border border-dashed border-slate-700 rounded-lg p-6 flex flex-col items-center justify-center text-center opacity-50 min-h-[100px]">
+                    <i data-lucide="plus" class="w-8 h-8 text-slate-600 mb-2"></i>
+                    <span class="text-sm text-slate-500">More coming soon...</span>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <div id="footer-placeholder"></div>
+    <!-- Latest Thoughts Preview -->
+    <section id="thoughts-preview" class="py-20 border-y border-white/5 bg-slate-800/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Digital Insights</h2>
+            <p class="text-slate-400 mb-8">Thoughts on leadership, technology, and tinkering.</p>
+            <a href="blog.html" class="inline-flex items-center justify-center px-8 py-4 border border-brand-accent text-base font-medium rounded-lg text-brand-accent hover:bg-brand-accent hover:text-white transition-all">
+                Read the Blog
+                <i data-lucide="book-open" class="ml-2 h-5 w-5"></i>
+            </a>
+        </div>
+    </section>
 
-    <!-- START OF SCRIPT BLOCK -->
-    <script>
-        /**
-         * Reusable Components (Nav & Footer) - Now using Tailwind CSS classes
-         */
-
-        // Function to determine correct path for links
-        function getLinkPath(anchor) {
-            const path = window.location.pathname;
-            // Check if we are on the home page (root or index.html)
-            const isHome = path.endsWith('index.html') || path.endsWith('/') || path.length < 2; 
-            
-            if (isHome) {
-                return anchor;
-            } else {
-                return `index.html${anchor}`;
-            }
-        }
-
-        // Navigation HTML Generator
-        function getNavHTML() {
-            const isBlog = window.location.pathname.includes('blog.html');
-            const blogClass = isBlog ? "text-accent font-medium" : "text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150";
-            
-            const aboutLink = getLinkPath('#about');
-            const stackLink = getLinkPath('#stack');
-            const projectsLink = getLinkPath('#projects');
-            const networkLink = getLinkPath('#network');
-
-            return `
-            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
-            <nav class="navbar fixed top-0 w-full z-50 bg-slate-50/90 dark:bg-slate-900/80 shadow-md border-b border-slate-200 dark:border-slate-700 h-16 flex items-center">
-                <div class="max-w-7xl mx-auto px-6 flex justify-between items-center w-full">
-                    <!-- Logo -->
-                    <a href="index.html" class="font-mono text-xl font-bold">
-                        <span class="text-accent">&lt;</span>BJ.Beier<span class="text-accent">/&gt;</span>
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="font-mono text-xl font-bold text-white tracking-tighter">
+                        <span class="text-brand-accent">&lt;</span>BJ.Beier<span class="text-brand-accent">/&gt;</span>
                     </a>
-
-                    <!-- Desktop Menu -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="${aboutLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">About</a>
-                        <a href="${stackLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">The Stack</a>
-                        <a href="${projectsLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">Projects</a>
-                        <a href="blog.html" class="${blogClass} text-sm font-medium">Insights (Blog)</a>
-                        <a href="${networkLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">The Network</a>
-                        
-                        <!-- Dark Mode Toggle (Desktop) -->
-                        <button id="theme-toggle-desktop" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150" aria-label="Toggle Dark Mode">
-                            <i data-lucide="moon" class="hidden-light-mode w-5 h-5"></i>
-                            <i data-lucide="sun" class="hidden-dark-mode w-5 h-5"></i>
-                        </button>
-                    </div>
-
-                    <!-- Mobile Controls -->
-                    <div class="flex items-center space-x-4 md:hidden">
-                        <button id="theme-toggle-mobile" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150">
-                            <i data-lucide="moon" class="hidden-light-mode w-5 h-5"></i>
-                            <i data-lucide="sun" class="hidden-dark-mode w-5 h-5"></i>
-                        </button>
-                        <button id="mobile-menu-btn" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150">
-                            <i data-lucide="menu" class="w-6 h-6"></i>
-                        </button>
-                    </div>
+                    <p class="text-slate-500 text-sm mt-2">Problem Solver. Leader. Knowledge Seeker.</p>
                 </div>
-
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="absolute top-16 left-0 w-full bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-xl flex-col p-4 space-y-3 hidden md:hidden">
-                    <a href="${aboutLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About</a>
-                    <a href="${stackLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The Stack</a>
-                    <a href="${projectsLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Projects</a>
-                    <a href="blog.html" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Insights (Blog)</a>
-                    <a href="${networkLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The Network</a>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/bjbeier" class="text-slate-400 hover:text-white transition-colors">
+                        <span class="sr-only">LinkedIn</span>
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://x.com/bjbeier" class="text-slate-400 hover:text-white transition-colors">
+                        <span class="sr-only">X (Twitter)</span>
+                        <i data-lucide="twitter" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://github.com/bjbeier" class="text-slate-400 hover:text-white transition-colors">
+                        <span class="sr-only">GitHub</span>
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </a>
+                     <a href="mailto:contact@bjbeier.com" class="text-slate-400 hover:text-white transition-colors">
+                        <span class="sr-only">Email</span>
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </a>
                 </div>
-            </nav>
-            `;
-        }
-
-        // Footer HTML Generator
-        function getFooterHTML() {
-            return `
-            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
-            <footer class="mt-auto bg-slate-50/90 dark:bg-slate-900/80 border-t border-slate-200 dark:border-slate-700 py-16">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
-                        <div class="text-center md:text-left">
-                            <a href="index.html" class="font-mono text-xl font-bold">
-                                <span class="text-accent">&lt;</span>BJ.Beier<span class="text-accent">/&gt;</span>
-                            </a>
-                            <p class="text-muted text-sm mt-4">Problem Solver. Leader. Knowledge Seeker.</p>
-                        </div>
-                        <div class="flex space-x-6 text-slate-500 dark:text-slate-400">
-                            <a href="https://linkedin.com/in/bjbeier" class="hover:text-accent transition duration-150" aria-label="LinkedIn">
-                                <i data-lucide="linkedin" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://x.com/bjbeier" class="hover:text-accent transition duration-150" aria-label="X (Twitter)">
-                                <i data-lucide="twitter" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://github.com/bjbeier" class="hover:text-accent transition duration-150" aria-label="GitHub">
-                                <i data-lucide="github" class="w-6 h-6"></i>
-                            </a>
-                             <a href="mailto:contact@bjbeier.com" class="hover:text-accent transition duration-150" aria-label="Email">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row justify-between items-center text-sm text-muted pt-8 border-t border-slate-200 dark:border-slate-800">
-                        <p>&copy; 2025 BJ Beier. All rights reserved.</p>
-                        <div class="flex items-center space-x-2 mt-4 md:mt-0 font-mono text-xs">
-                            <span class="terminal-green">➜</span>
-                            <span id="dad-joke" class="italic">Loading tech humor...</span>
-                        </div>
-                    </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-600">
+                <p>&copy; 2025 BJ Beier. All rights reserved.</p>
+                <!-- Dad Joke Container -->
+                <div class="mt-4 md:mt-0 font-mono text-xs flex items-center">
+                    <span class="text-brand-terminal mr-2">➜</span>
+                    <span id="dad-joke" class="italic">Loading tech humor...</span>
                 </div>
-            </footer>
-            `;
-        }
+            </div>
+        </div>
+    </footer>
 
-        // Theme Toggle Logic
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.classList.contains('dark');
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Dad Joke Generator
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs.",
+            "I would tell you a UDP joke, but you might not get it.",
+            "There are 10 types of people in the world: those who understand binary, and those who don't.",
+            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+            "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+            "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'",
+            "My password is the last 8 digits of Pi.",
+            "I'm not lazy, I'm just in energy saving mode."
+        ];
+
+        document.getElementById('dad-joke').textContent = jokes[Math.floor(Math.random() * jokes.length)];
+
+        // Typewriter Effect
+        const textElement = document.getElementById('typewriter');
+        const phrases = [
+            "Chief Information Officer.",
+            "Tech Enthusiast.",
+            "Home Automation Tinkerer.",
+            "Problem Solver.",
+            "Family Man."
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
             
-            if (isDark) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; 
             } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; 
             }
-            
-            updateThemeIcons();
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typeSpeed = 2000;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
         }
 
-        function updateThemeIcons() {
-            const isDark = document.documentElement.classList.contains('dark');
-            
-            // Toggle icons based on dark mode status
-            document.querySelectorAll('.hidden-light-mode').forEach(el => {
-                el.style.display = isDark ? 'none' : 'block';
-            });
-            document.querySelectorAll('.hidden-dark-mode').forEach(el => {
-                el.style.display = isDark ? 'block' : 'none';
-            });
-        }
-
-        // Initialization
-        function initSite() {
-            // 1. Initialize Theme from Storage
-            const savedTheme = localStorage.getItem('theme');
-            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-
-            // 2. Inject Nav
-            const navPlaceholder = document.getElementById('nav-placeholder');
-            if (navPlaceholder) {
-                navPlaceholder.innerHTML = getNavHTML();
-                
-                // Mobile Menu Logic
-                const mobileBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileBtn && mobileMenu) {
-                    mobileBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('hidden');
-                    });
-                }
-
-                // Theme Toggle Logic
-                const desktopToggle = document.getElementById('theme-toggle-desktop');
-                const mobileToggle = document.getElementById('theme-toggle-mobile');
-                if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
-                if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
-            }
-
-            // 3. Inject Footer
-            const footerPlaceholder = document.getElementById('footer-placeholder');
-            if (footerPlaceholder) {
-                footerPlaceholder.innerHTML = getFooterHTML();
-                
-                // Dad Joke
-                const jokeElement = document.getElementById('dad-joke');
-                if (jokeElement) {
-                    const jokes = [
-                        "Why do programmers prefer dark mode? Because light attracts bugs.",
-                        "I would tell you a UDP joke, but you might not get it.",
-                        "There are 10 types of people in the world: those who understand binary, and those who don't.",
-                        "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
-                        "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
-                        "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'",
-                        "My password is the last 8 digits of Pi.",
-                        "I'm not lazy, I'm just in energy saving mode."
-                    ];
-                    jokeElement.textContent = jokes[Math.floor(Math.random() * jokes.length)];
-                }
-            }
-
-            // 4. Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-                updateThemeIcons(); // Set initial icon state
-            }
-
-            // 5. Typewriter
-            const twEl = document.getElementById('typewriter');
-            if (twEl) initTypewriter(twEl);
-        }
-
-        function initTypewriter(element) {
-            const phrases = ["Chief Information Officer.", "Tech Enthusiast.", "Home Automation Tinkerer.", "Problem Solver.", "Family Man."];
-            let phraseIndex = 0, charIndex = 0, isDeleting = false, typeSpeed = 100;
-
-            function type() {
-                const current = phrases[phraseIndex];
-                if (isDeleting) {
-                    element.textContent = current.substring(0, charIndex - 1);
-                    charIndex--;
-                    typeSpeed = 50;
-                } else {
-                    element.textContent = current.substring(0, charIndex + 1);
-                    charIndex++;
-                    typeSpeed = 100;
-                }
-
-                if (!isDeleting && charIndex === current.length) {
-                    isDeleting = true; typeSpeed = 2000;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
-                }
-                setTimeout(type, typeSpeed);
-            }
-            type();
-        }
-
-        document.addEventListener('DOMContentLoaded', initSite);
+        document.addEventListener('DOMContentLoaded', type);
     </script>
-    <!-- END OF SCRIPT BLOCK -->
-
 </body>
 </html>

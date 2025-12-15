@@ -1,337 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Insights | BJ Beier</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
-    
-    <!-- Tailwind CSS CDN -->
+
+    <!-- Fonts & CSS (Same as Index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Style Block for CSS Variables and Keyframes -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            accent: '#38bdf8',
+                            terminal: '#22c55e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap');
-
-        /* Default Light Theme Variables */
-        :root {
-            --color-bg: #f8fafc;       /* Slate 50 (Off-white body background) */
-            --color-text-main: #0f172a;    /* Slate 900 */
-            --color-text-muted: #64748b;   /* Slate 500 */
-            --color-accent: #0284c7;       /* Sky 600 */
-            --color-terminal-green: #22c55e;
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        /* Dark Theme Variables */
-        html.dark {
-            --color-bg: #0f172a;       /* Slate 900 */
-            --color-text-main: #f1f5f9;    /* Slate 100 */
-            --color-text-muted: #94a3b8;   /* Slate 400 */
-            --color-accent: #38bdf8;       /* Sky 400 */
-        }
-        
-        /* Apply Base Styles and Fonts */
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            min-height: 100vh; /* Full viewport height */
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Custom Class using variables */
-        .text-accent { color: var(--color-accent); }
-        .text-muted { color: var(--color-text-muted); }
-        .font-mono { font-family: 'Fira Code', monospace; }
-        .terminal-green { color: var(--color-terminal-green); }
-
-        /* Animations (needed for consistency, though not used on this page) */
-        @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        /* Navbar specific blur background for better readability */
-        .navbar { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="selection:bg-sky-200 selection:text-slate-900 dark:selection:bg-sky-800 dark:selection:text-white">
+<body class="bg-brand-dark text-slate-300 font-sans antialiased">
 
-    <div id="nav-placeholder"></div>
-
-    <header class="py-20 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <h1 class="text-5xl font-extrabold mb-4">Digital Insights</h1>
-            <p class="text-lg text-muted max-w-xl mx-auto">
-                A collection of thoughts on technology, leadership, and the occasional home automation disaster.
-            </p>
+    <!-- Navigation (Simplified for Blog) -->
+    <nav class="fixed w-full z-50 bg-brand-dark/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="mr-2 w-5 h-5"></i>
+                    Back to Home
+                </a>
+                <span class="font-mono font-bold text-white"><span class="text-brand-accent">/</span>insights</span>
+            </div>
         </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="pt-32 pb-12 px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Digital Insights</h1>
+        <p class="text-slate-400 max-w-xl mx-auto">
+            A collection of thoughts on technology, leadership, and the occasional home automation disaster.
+        </p>
     </header>
 
-    <main class="max-w-3xl mx-auto px-6 pb-20 w-full">
-        <div class="grid grid-cols-1 gap-8">
-            
-            <!-- Post 1 -->
-            <article class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.005] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                <header class="mb-4">
-                    <div class="font-mono text-xs text-muted mb-2">
-                        <span class="text-accent">Sep 26, 2024</span> #Linux #Docker
-                    </div>
-                    <h2 class="text-2xl font-bold">My Journey into Linux and Docker</h2>
-                </header>
-                <div class="text-muted text-base leading-relaxed">
-                    <p class="mb-4">Working in tech for half of my life and tinkering in tech for almost all of it, I've dabbled in a little bit of everything. Recently, I decided it was time to move my home lab away from standalone heavy VMs and into the world of containerization.</p>
-                    <p class="mb-4"><strong>Why Docker?</strong><br>The efficiency gains were immediate. Instead of dedicating 4GB of RAM to a VM running a simple DNS blocker, I could run Pi-Hole in a container using a fraction of the resources.</p>
-                    <p>The learning curve wasn't flat—understanding volumes and networking took a weekend of "trial by fire"—but the result is a portable, clean infrastructure defined entirely in code (YAML).</p>
-                </div>
-            </article>
+    <!-- Blog Posts Container -->
+    <main class="max-w-4xl mx-auto px-4 pb-20 space-y-12">
 
-            <!-- Post 2 -->
-            <article class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.005] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                <header class="mb-4">
-                    <div class="font-mono text-xs text-muted mb-2">
-                        <span class="text-accent">Jan 5, 2022</span> #Personal #Web
-                    </div>
-                    <h2 class="text-2xl font-bold">Time For A Digital Refresh</h2>
-                </header>
-                <div class="text-muted text-base leading-relaxed">
-                    <p class="mb-4">A number of years ago, I purchased my own domain name. It was the first step in claiming my digital identity. Now it's time to update it for the modern web.</p>
-                    <p>This new site represents a shift from "just a blog" to a digital garden—a place where my professional work and personal hobbies can coexist. No heavy CMS, just clean code and fast load times.</p>
+        <!-- Post 1 -->
+        <article id="linux-docker" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Sep 26, 2024</span>
+                    <span>#Linux #Docker</span>
                 </div>
-            </article>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">My Journey into Linux and Docker</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    Working in tech for half of my life and tinkering in tech for almost all of it, I've dabbled in a little bit of everything. Recently, I decided it was time to move my home lab away from standalone heavy VMs and into the world of containerization.
+                </p>
+                <p>
+                    <strong>Why Docker?</strong><br>
+                    The efficiency gains were immediate. Instead of dedicating 4GB of RAM to a VM running a simple DNS blocker, I could run Pi-Hole in a container using a fraction of the resources.
+                </p>
+                <p>
+                    The learning curve wasn't flat—understanding volumes and networking took a weekend of "trial by fire"—but the result is a portable, clean infrastructure defined entirely in code (YAML).
+                </p>
+            </div>
+        </article>
 
-            <!-- Post 3 -->
-            <article class="bg-white dark:bg-slate-800/70 border border-slate-200 shadow-lg rounded-xl p-8 transition-all duration-200 hover:scale-[1.005] hover:shadow-xl dark:border-slate-700 dark:hover:border-sky-400">
-                <header class="mb-4">
-                    <div class="font-mono text-xs text-muted mb-2">
-                        <span class="text-accent">Dec 1, 2018</span> #Career #Leadership
-                    </div>
-                    <h2 class="text-2xl font-bold">Be Your Best Self – Show Your Best Self</h2>
-                </header>
-                <div class="text-muted text-base leading-relaxed">
-                    <p class="mb-4">This post is a follow up to “Be Your Best Self – Tips For Any Employee”. Navigating the corporate ladder while staying true to your skills is a balancing act.</p>
-                    <p>The core takeaway? Authenticity wins. Whether you are in the server room or the boardroom, people respect consistency. Don't hide your "geek" side—leverage it as your unique advantage.</p>
+        <!-- Post 2 -->
+        <article id="digital-refresh" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Jan 5, 2022</span>
+                    <span>#Personal #Web</span>
                 </div>
-            </article>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Time For A Digital Refresh</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    A number of years ago, I purchased my own domain name. It was the first step in claiming my digital identity. Now it's time to update it for the modern web.
+                </p>
+                <p>
+                    This new site represents a shift from "just a blog" to a digital garden—a place where my professional work and personal hobbies can coexist. No heavy CMS, just clean code and fast load times.
+                </p>
+            </div>
+        </article>
 
-        </div>
+        <!-- Post 3 -->
+        <article id="best-self" class="glass-card p-8 rounded-2xl hover:border-brand-accent/30 transition-colors">
+            <header class="mb-6">
+                <div class="flex items-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                    <span class="text-brand-accent">Dec 1, 2018</span>
+                    <span>#Career #Leadership</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Be Your Best Self – Show Your Best Self</h2>
+            </header>
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed space-y-4">
+                <p>
+                    This post is a follow up to “Be Your Best Self – Tips For Any Employee”. Navigating the corporate ladder while staying true to your skills is a balancing act.
+                </p>
+                <p>
+                    The core takeaway? Authenticity wins. Whether you are in the server room or the boardroom, people respect consistency. Don't hide your "geek" side—leverage it as your unique advantage.
+                </p>
+            </div>
+        </article>
+
     </main>
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2025 BJ Beier. All rights reserved.</p>
+    </footer>
 
-    <!-- START OF SCRIPT BLOCK (Copied from index.html for self-contained functionality) -->
     <script>
-        /**
-         * Reusable Components (Nav & Footer) - Now using Tailwind CSS classes
-         */
-
-        // Function to determine correct path for links
-        function getLinkPath(anchor) {
-            const path = window.location.pathname;
-            // Check if we are on the home page (root or index.html)
-            const isHome = path.endsWith('index.html') || path.endsWith('/') || path.length < 2; 
-            
-            if (isHome) {
-                return anchor;
-            } else {
-                return `index.html${anchor}`;
-            }
-        }
-
-        // Navigation HTML Generator
-        function getNavHTML() {
-            const isBlog = window.location.pathname.includes('blog.html');
-            const blogClass = isBlog ? "text-accent font-medium" : "text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150";
-            
-            const aboutLink = getLinkPath('#about');
-            const stackLink = getLinkPath('#stack');
-            const projectsLink = getLinkPath('#projects');
-            const networkLink = getLinkPath('#network');
-
-            return `
-            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
-            <nav class="navbar fixed top-0 w-full z-50 bg-slate-50/90 dark:bg-slate-900/80 shadow-md border-b border-slate-200 dark:border-slate-700 h-16 flex items-center">
-                <div class="max-w-7xl mx-auto px-6 flex justify-between items-center w-full">
-                    <!-- Logo -->
-                    <a href="index.html" class="font-mono text-xl font-bold">
-                        <span class="text-accent">&lt;</span>BJ.Beier<span class="text-accent">/&gt;</span>
-                    </a>
-
-                    <!-- Desktop Menu -->
-                    <div class="hidden md:flex items-center space-x-8">
-                        <a href="${aboutLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">About</a>
-                        <a href="${stackLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">The Stack</a>
-                        <a href="${projectsLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">Projects</a>
-                        <a href="blog.html" class="${blogClass} text-sm font-medium">Insights (Blog)</a>
-                        <a href="${networkLink}" class="text-slate-500 hover:text-accent dark:text-slate-400 dark:hover:text-accent transition duration-150 text-sm font-medium">The Network</a>
-                        
-                        <!-- Dark Mode Toggle (Desktop) -->
-                        <button id="theme-toggle-desktop" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150" aria-label="Toggle Dark Mode">
-                            <i data-lucide="moon" class="hidden-light-mode w-5 h-5"></i>
-                            <i data-lucide="sun" class="hidden-dark-mode w-5 h-5"></i>
-                        </button>
-                    </div>
-
-                    <!-- Mobile Controls -->
-                    <div class="flex items-center space-x-4 md:hidden">
-                        <button id="theme-toggle-mobile" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150">
-                            <i data-lucide="moon" class="hidden-light-mode w-5 h-5"></i>
-                            <i data-lucide="sun" class="hidden-dark-mode w-5 h-5"></i>
-                        </button>
-                        <button id="mobile-menu-btn" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white transition duration-150">
-                            <i data-lucide="menu" class="w-6 h-6"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="absolute top-16 left-0 w-full bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-xl flex-col p-4 space-y-3 hidden md:hidden">
-                    <a href="${aboutLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">About</a>
-                    <a href="${stackLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The Stack</a>
-                    <a href="${projectsLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Projects</a>
-                    <a href="blog.html" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">Insights (Blog)</a>
-                    <a href="${networkLink}" class="block py-2 px-3 rounded-md text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium">The Network</a>
-                </div>
-            </nav>
-            `;
-        }
-
-        // Footer HTML Generator
-        function getFooterHTML() {
-            return `
-            <!-- Updated background to bg-slate-50/90 for a softer light mode blur -->
-            <footer class="mt-auto bg-slate-50/90 dark:bg-slate-900/80 border-t border-slate-200 dark:border-slate-700 py-16">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
-                        <div class="text-center md:text-left">
-                            <a href="index.html" class="font-mono text-xl font-bold">
-                                <span class="text-accent">&lt;</span>BJ.Beier<span class="text-accent">/&gt;</span>
-                            </a>
-                            <p class="text-muted text-sm mt-4">Problem Solver. Leader. Knowledge Seeker.</p>
-                        </div>
-                        <div class="flex space-x-6 text-slate-500 dark:text-slate-400">
-                            <a href="https://linkedin.com/in/bjbeier" class="hover:text-accent transition duration-150" aria-label="LinkedIn">
-                                <i data-lucide="linkedin" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://x.com/bjbeier" class="hover:text-accent transition duration-150" aria-label="X (Twitter)">
-                                <i data-lucide="twitter" class="w-6 h-6"></i>
-                            </a>
-                            <a href="https://github.com/bjbeier" class="hover:text-accent transition duration-150" aria-label="GitHub">
-                                <i data-lucide="github" class="w-6 h-6"></i>
-                            </a>
-                             <a href="mailto:contact@bjbeier.com" class="hover:text-accent transition duration-150" aria-label="Email">
-                                <i data-lucide="mail" class="w-6 h-6"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex flex-col md:flex-row justify-between items-center text-sm text-muted pt-8 border-t border-slate-200 dark:border-slate-800">
-                        <p>&copy; 2025 BJ Beier. All rights reserved.</p>
-                        <div class="flex items-center space-x-2 mt-4 md:mt-0 font-mono text-xs">
-                            <span class="terminal-green">➜</span>
-                            <span id="dad-joke" class="italic">Loading tech humor...</span>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            `;
-        }
-
-        // Theme Toggle Logic
-        function toggleTheme() {
-            const html = document.documentElement;
-            const isDark = html.classList.contains('dark');
-            
-            if (isDark) {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            
-            updateThemeIcons();
-        }
-
-        function updateThemeIcons() {
-            const isDark = document.documentElement.classList.contains('dark');
-            
-            // Toggle icons based on dark mode status
-            document.querySelectorAll('.hidden-light-mode').forEach(el => {
-                el.style.display = isDark ? 'none' : 'block';
-            });
-            document.querySelectorAll('.hidden-dark-mode').forEach(el => {
-                el.style.display = isDark ? 'block' : 'none';
-            });
-        }
-
-        // Initialization
-        function initSite() {
-            // 1. Initialize Theme from Storage
-            const savedTheme = localStorage.getItem('theme');
-            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-
-            // 2. Inject Nav
-            const navPlaceholder = document.getElementById('nav-placeholder');
-            if (navPlaceholder) {
-                navPlaceholder.innerHTML = getNavHTML();
-                
-                // Mobile Menu Logic
-                const mobileBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileBtn && mobileMenu) {
-                    mobileBtn.addEventListener('click', () => {
-                        mobileMenu.classList.toggle('hidden');
-                    });
-                }
-
-                // Theme Toggle Logic
-                const desktopToggle = document.getElementById('theme-toggle-desktop');
-                const mobileToggle = document.getElementById('theme-toggle-mobile');
-                if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
-                if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
-            }
-
-            // 3. Inject Footer
-            const footerPlaceholder = document.getElementById('footer-placeholder');
-            if (footerPlaceholder) {
-                footerPlaceholder.innerHTML = getFooterHTML();
-                
-                // Dad Joke
-                const jokeElement = document.getElementById('dad-joke');
-                if (jokeElement) {
-                    const jokes = [
-                        "Why do programmers prefer dark mode? Because light attracts bugs.",
-                        "I would tell you a UDP joke, but you might not get it.",
-                        "There are 10 types of people in the world: those who understand binary, and those who don't.",
-                        "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
-                        "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
-                        "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'",
-                        "My password is the last 8 digits of Pi.",
-                        "I'm not lazy, I'm just in energy saving mode."
-                    ];
-                    jokeElement.textContent = jokes[Math.floor(Math.random() * jokes.length)];
-                }
-            }
-
-            // 4. Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-                updateThemeIcons(); // Set initial icon state
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', initSite);
+        lucide.createIcons();
     </script>
-    <!-- END OF SCRIPT BLOCK -->
 </body>
 </html>
