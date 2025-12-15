@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey into Linux and Docker | BJ Beier</title>
+    <meta name="description" content="Chronicles the shift from being a die-hard Windows user to an open-source enthusiast embracing Linux and Docker for homelab and professional infrastructure.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/favicon.png">
+
+    <!-- Fonts & CSS (Same as Index) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            accent: '#38bdf8',
+                            terminal: '#22c55e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navigation (Simple Blog Header) -->
+    <header class="bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="../blog.html" class="text-slate-400 hover:text-brand-accent transition-colors flex items-center">
+                <i data-lucide="arrow-left" class="w-5 h-5 mr-1"></i> All Articles
+            </a>
+            <a href="../index.html" class="font-mono text-xl font-bold text-white tracking-tighter hover:text-brand-accent transition-colors">
+                <span class="text-brand-accent">&lt;</span>BJ.Beier<span class="text-brand-accent">/&gt;</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        <div class="mb-10 text-center">
+            <div class="flex items-center justify-center gap-4 text-sm text-slate-500 font-mono mb-2">
+                <span class="text-brand-accent">Jan 16, 2019</span>
+                <span>#Linux #Docker #Homelab</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">My Journey into Linux and Docker: From Windows Fanboy to Open-Source Enthusiast</h1>
+            <p class="text-lg text-slate-400 mt-4 italic">How a single personal project changed my entire infrastructure philosophy.</p>
+        </div>
+
+        <article class="prose prose-xl prose-invert max-w-none text-slate-300 leading-relaxed space-y-6">
+            <p>
+                For the better part of two decades, my digital world revolved around Microsoft. Windows was the operating system for gaming, work, and every personal project. Linux was that obscure, command-line thing used by sysadmins in movies and college students who liked typing too much. I was happy in my walled garden, until I wasn't.
+            </p>
+
+            <h2>The Catalyst: A Self-Hosted Project</h2>
+            <p>
+                A few years ago, I decided I wanted a better way to manage my family's digital assets—photos, documents, backups. I initially tried Windows Server, but it felt heavy, required too much maintenance, and honestly, was overkill for a simple file server. I stumbled upon a tutorial for a self-hosted media server that, inconveniently, *required* Ubuntu.
+            </p>
+            
+            <p>
+                Reluctantly, I spun up a VM. The initial setup was painful. The command line felt like trying to write a letter in an alien language. But slowly, line by line, I got the server running. What struck me was the sheer **efficiency**. The system idled at almost no CPU usage, used minimal RAM, and was rock solid. The Windows server seemed sluggish by comparison.
+            </p>
+
+            <h2>Discovering the Power of Docker</h2>
+            <p>
+                After getting comfortable with basic Ubuntu operations, I encountered my next major hurdle: dependency hell. Trying to run three different applications, each requiring a specific version of Python or PHP, resulted in constant conflicts. This is where Docker entered my life and changed everything.
+            </p>
+
+            <blockquote class="border-l-4 border-brand-accent pl-4 italic text-slate-400">
+                Docker didn't just solve a problem; it fundamentally changed how I think about deploying and managing applications—both at home and in my professional life.
+            </blockquote>
+
+            <p>
+                The concept of containers—lightweight, isolated environments for applications—was revolutionary. Suddenly, I could run services for media, DNS filtering (hello, Pi-Hole), and home automation (hello, Home Assistant) all on the same tiny Linux box, without worrying about them fighting over resources or libraries.
+            </p>
+            
+            <div class="border border-slate-700 p-4 rounded-lg bg-slate-800/50">
+                <h3 class="text-xl font-semibold text-brand-terminal flex items-center mb-3">
+                    <i data-lucide="terminal" class="w-5 h-5 mr-2"></i> Quick Command Line Shift
+                </h3>
+                <p class="text-sm font-mono text-slate-400">
+                    The biggest change: learning the core commands. Now, simple `ls`, `grep`, and `ssh` are as natural as clicking an icon.
+                </p>
+                <pre class="bg-slate-900 text-brand-terminal p-3 mt-3 rounded-md text-sm">
+sudo apt update
+sudo apt upgrade
+docker ps -a
+</pre>
+            </div>
+
+            <h2>From Hobby to Professional Insight</h2>
+            <p>
+                This personal journey eventually translated into my leadership role. Understanding the agility and resource-efficiency of containerization and lightweight operating systems gave me valuable insight into modern enterprise infrastructure strategies. While financial institutions have strict rules, the philosophy of lean, reproducible, and isolated deployments is universal.
+            </p>
+
+            <p>
+                Today, I still use Windows for my primary desktop needs, but my entire infrastructure runs on Linux and Docker. It’s a hybrid world, and I wouldn't have it any other way. The journey taught me that sometimes, the best solution requires stepping outside the technology you've always known and embracing the open-source spirit.
+            </p>
+        </article>
+
+        <!-- Back Link -->
+        <div class="mt-16 text-center">
+             <a href="../blog.html" class="inline-flex items-center text-lg text-brand-accent hover:underline font-medium p-4 border border-slate-700 rounded-lg hover:bg-slate-800 transition-colors">
+                <i data-lucide="list" class="w-5 h-5 mr-2"></i> Return to Article Index
+            </a>
+        </div>
+        
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2025 BJ Beier. Insights by BJ.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
