@@ -73,9 +73,10 @@
                 -webkit-background-clip: text;
                 background-clip: text;
                 -webkit-text-fill-color: transparent;
-                /* Note: we do NOT set 'color: transparent' here as a global rule 
-                   to prevent total invisibility if the clip fails at the GPU level */
             }
+        }
+        .network-description {
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -188,37 +189,121 @@
         </div>
     </section>
 
-    <!-- Rest of sections (Stack, Projects, Network) - Truncated for brevity but preserved in structure -->
+    <!-- Tech Stack Section -->
     <section id="stack" class="py-20 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white text-center mb-12">The Stack</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">The Stack & Interests</h2>
+            </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors">
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
                     <i data-lucide="server" class="w-8 h-8 text-blue-400 mb-4"></i>
-                    <h3 class="text-lg font-semibold text-white">Infra</h3>
-                    <p class="text-sm text-slate-400">Linux, Docker, Proxmox.</p>
+                    <h3 class="text-lg font-semibold text-white mb-2">Linux & Virtualization</h3>
+                    <p class="text-sm text-slate-400">Proxmox, Docker, and minimalist distros for testing.</p>
                 </div>
-                <!-- ... other stack items ... -->
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <i data-lucide="home" class="w-8 h-8 text-green-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Home Automation</h3>
+                    <p class="text-sm text-slate-400">Home Assistant setups for practical dad-tech.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <i data-lucide="briefcase" class="w-8 h-8 text-purple-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Leadership</h3>
+                    <p class="text-sm text-slate-400">CIO at Guardian Savings Bank. Strategy & Innovation.</p>
+                </div>
+                <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
+                    <i data-lucide="smartphone" class="w-8 h-8 text-orange-400 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Android</h3>
+                    <p class="text-sm text-slate-400">Open source advocate and mobile power-user.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12">Projects & Lab</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-8 rounded-2xl border border-slate-700 hover:border-brand-accent/50 transition-all flex flex-col h-full">
+                    <div class="mb-6">
+                        <img src="images/circuit-board-large.png" alt="Home Lab" class="w-16 h-16 rounded-xl object-cover">
+                    </div>
+                    <div class="flex-1">
+                        <span class="px-2 py-1 text-xs font-bold text-slate-900 bg-green-400 rounded">ACTIVE</span>
+                        <h3 class="text-2xl font-bold text-white mt-3 mb-2">Home Lab Refactor</h3>
+                        <p class="text-slate-400">Migrating legacy services to a Dockerized environment for privacy.</p>
+                    </div>
+                </div>
+                <a href="https://bluedroidtech.com" target="_blank" class="block">
+                    <div class="glass-card p-8 rounded-2xl border border-slate-700 hover:border-brand-accent/50 transition-all flex flex-col h-full">
+                        <div class="mb-6">
+                             <img src="images/bdt.png" alt="BDT" class="w-16 h-16 rounded-xl object-cover">
+                        </div>
+                        <div class="flex-1">
+                            <span class="px-2 py-1 text-xs font-bold text-slate-900 bg-green-400 rounded">ACTIVE</span>
+                            <h3 class="text-2xl font-bold text-white mt-3 mb-2">Blue Droid Technologies <i data-lucide="external-link" class="inline w-4 h-4 ml-1"></i></h3>
+                            <p class="text-slate-400">Making technology simple for small businesses.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Network -->
+    <section id="network" class="py-20 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12">The Network</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="https://tabgeeks.com" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all">
+                    <div class="flex items-start gap-4">
+                        <img src="images/tabgeeks.png" alt="TabGeeks" class="w-12 h-12 rounded object-contain bg-white/10 p-1">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">TABGeeks</h3>
+                            <p class="text-sm text-slate-400">Resources for IT Professionals.</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://technotim.live" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all">
+                    <div class="flex items-start gap-4">
+                        <img src="images/technotim.jpg" onerror="this.onerror=null; this.src='https://placehold.co/64x64/1e293b/94a3b8?text=TT';" alt="TechnoTim" class="w-12 h-12 rounded object-cover">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">TechnoTim</h3>
+                            <p class="text-sm text-slate-400">Self-hosting & Home Lab community.</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="border border-dashed border-slate-700 rounded-lg p-6 flex items-center justify-center text-slate-500 italic text-sm">
+                    More coming soon...
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="bg-brand-dark border-t border-slate-800 pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-            <p>&copy; 2025 BJ Beier. All rights reserved.</p>
-            <div class="mt-4 font-mono text-xs text-brand-terminal" id="dad-joke">Loading humor...</div>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2025 BJ Beier. All rights reserved.</p>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-brand-terminal" id="dad-joke">Loading humor...</div>
+            </div>
         </div>
     </footer>
 
-    <!-- SCRIPTS MOVED TO END -->
+    <!-- Scripts -->
     <script>
         lucide.createIcons();
         
-        const jokes = ["Why do programmers prefer dark mode? Because light attracts bugs.", "I would tell you a UDP joke, but you might not get it."];
+        const jokes = [
+            "Why do programmers prefer dark mode? Because light attracts bugs.", 
+            "I would tell you a UDP joke, but you might not get it.",
+            "There are 10 types of people in the world: those who understand binary, and those who don't.",
+            "A SQL query walks into a bar, asks two tables, 'Can I join you?'"
+        ];
         document.getElementById('dad-joke').textContent = jokes[Math.floor(Math.random() * jokes.length)];
 
         const textElement = document.getElementById('typewriter');
-        const phrases = ["Chief Information Officer.", "Tech Enthusiast.", "Problem Solver."];
+        const phrases = ["Chief Information Officer.", "Tech Enthusiast.", "Problem Solver.", "Home Automation Tinkerer."];
         let pI = 0, cI = 0, del = false;
 
         function type() {
@@ -231,9 +316,14 @@
             setTimeout(type, speed);
         }
         type();
+
+        // Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     </script>
 
-    <!-- GOOGLE ANALYTICS AT THE VERY END -->
+    <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-393461309"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
