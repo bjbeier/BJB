@@ -61,9 +61,8 @@
         /* Ensure the full description is visible for Network items */
         .network-description {
             line-height: 1.5; /* Default line height */
-            /* Removed line-clamp-2 to show full text */
         }
-        /* Fix for gradient text rendering issues */
+        /* Fix for gradient text rendering issues (Crucial for compatibility) */
         .gradient-text-fix {
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent !important;
@@ -398,7 +397,6 @@
                         </div>
                         <div class="flex-1">
                             <h3 class="text-lg font-bold text-white group-hover:text-brand-accent">TABGeeks</h3>
-                            <!-- Removed line-clamp-2 class -->
                             <p class="text-sm text-slate-400 mt-1 network-description">An independent network of shows and resources by IT Professionals, for IT Professionals.</p>
                         </div>
                     </div>
@@ -408,12 +406,10 @@
                 <a href="https://technotim.live" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
                     <div class="flex items-start gap-4">
                         <div class="flex-shrink-0">
-                            <!-- Image path updated to images/technotim.jpg as requested -->
                             <img src="images/technotim.jpg" onerror="this.onerror=null; this.src='https://placehold.co/64x64/1e293b/94a3b8?text=TT';" alt="TechnoTim" class="w-16 h-16 rounded-md object-cover bg-white/10 p-0">
                         </div>
                         <div class="flex-1">
                             <h3 class="text-lg font-bold text-white group-hover:text-brand-accent">TechnoTim</h3>
-                            <!-- Removed line-clamp-2 class -->
                             <p class="text-sm text-slate-400 mt-1 network-description">A community and resource hub focused on self-hosting, server management, and home lab setups. Excellent tutorials for Docker, Proxmox, and more.</p>
                         </div>
                     </div>
@@ -427,20 +423,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Latest Thoughts Preview -->
-    <!--
-    <section id="thoughts-preview" class="py-20 border-y border-white/5 bg-slate-800/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-6">Digital Insights</h2>
-            <p class="text-slate-400 mb-8">Thoughts on leadership, technology, and tinkering.</p>
-            <a href="blog.html" class="inline-flex items-center justify-center px-8 py-4 border border-brand-accent text-base font-medium rounded-lg text-brand-accent hover:bg-brand-accent hover:text-white transition-all">
-                Read the Blog
-                <i data-lucide="book-open" class="ml-2 h-5 w-5"></i>
-            </a>
-        </div>
-    </section>
-    -->
 
     <!-- Footer -->
     <footer class="bg-brand-dark border-t border-slate-800 pt-16 pb-8">
@@ -461,7 +443,6 @@
                         <span class="sr-only">X (Twitter)</span>
                         <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
                     </a>
-                    <!-- REMOVED: GitHub link from footer -->
                      <a href="mailto:contact@bjbeier.com" class="text-slate-400 hover:text-white transition-colors">
                         <span class="sr-only">Email</span>
                         <i data-lucide="mail" class="w-6 h-6"></i>
