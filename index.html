@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BJ Beier | Leader & Tech Enthusiast</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://placehold.co; connect-src 'self' https://www.google-analytics.com;">
     <meta name="description" content="Personal site of BJ Beier - Leader, Tech Enthusiast, and Problem Solver.">
     
     <!-- Favicon -->
@@ -21,25 +23,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Tailwind Config for Custom Colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#0f172a', // Slate 900
-                            accent: '#38bdf8', // Sky 400
-                            terminal: '#22c55e', // Green 500
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Tailwind Config for Custom Colors -->
+    <script src="js/tailwind.config.js"></script>
 
     <style>
         /* Custom Utilities */
@@ -204,10 +189,10 @@
                             <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
                         </a>
                         <div class="flex gap-4">
-                            <a href="https://linkedin.com/in/bjbeier" target="_blank" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
+                            <a href="https://linkedin.com/in/bjbeier" target="_blank" rel="noopener noreferrer" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
                                 <i data-lucide="linkedin" class="w-5 h-5"></i>
                             </a>
-                            <a href="https://x.com/bjbeier" target="_blank" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all" title="X (Formerly Twitter)">
+                            <a href="https://x.com/bjbeier" target="_blank" rel="noopener noreferrer" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all" title="X (Formerly Twitter)">
                                 <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
                             </a>
                             <a href="mailto:contact@bjbeier.com" class="p-3 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all" title="Email Me">
@@ -358,7 +343,7 @@
                 </div>
 
                 <!-- Project 2 (Status changed to ACTIVE) -->
-                <a href="https://bluedroidtech.com" target="_blank" class="block h-full">
+                <a href="https://bluedroidtech.com" target="_blank" rel="noopener noreferrer" class="block h-full">
                     <div class="group relative rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 p-8 hover:border-brand-accent/50 transition-all duration-300 flex flex-col h-full">
                         <div class="mb-6">
                              <img src="images/bdt.png" alt="Blue Droid Technologies Icon" class="w-20 h-20 rounded-xl shadow-lg border border-slate-600 object-cover group-hover:scale-105 transition-transform duration-500">
@@ -389,7 +374,7 @@
             
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Network Item 1 (TabGeeks) - UPDATED DESCRIPTION -->
-                <a href="https://tabgeeks.com" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
+                <a href="https://tabgeeks.com" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
                     <div class="flex items-start gap-4">
                         <div class="flex-shrink-0">
                             <img src="images/tabgeeks.png" alt="TabGeeks" class="w-16 h-16 rounded-md object-contain bg-white/10 p-2">
@@ -403,7 +388,7 @@
                 </a>
 
                 <!-- Network Item 2 (TechnoTim) - ADDED -->
-                <a href="https://technotim.live" target="_blank" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
+                <a href="https://technotim.live" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
                     <div class="flex items-start gap-4">
                         <div class="flex-shrink-0">
                             <!-- Image path updated to images/technotim.jpg as requested -->
@@ -478,74 +463,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Mobile Menu Toggle Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Dad Joke Generator
-        const jokes = [
-            "Why do programmers prefer dark mode? Because light attracts bugs.",
-            "I would tell you a UDP joke, but you might not get it.",
-            "There are 10 types of people in the world: those who understand binary, and those who don't.",
-            "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
-            "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
-            "A SQL query walks into a bar, walks up to two tables and asks, 'Can I join you?'",
-            "My password is the last 8 digits of Pi.",
-            "I'm not lazy, I'm just in energy saving mode."
-        ];
-
-        document.getElementById('dad-joke').textContent = jokes[Math.floor(Math.random() * jokes.length)];
-
-        // Typewriter Effect
-        const textElement = document.getElementById('typewriter');
-        const phrases = [
-            "Leader.",
-            "Tech Enthusiast.",
-            "Home Automation Tinkerer.",
-            "Problem Solver.",
-            "Family Man."
-        ];
-        
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typeSpeed = 100;
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typeSpeed = 50; 
-            } else {
-                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typeSpeed = 100; 
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typeSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        document.addEventListener('DOMContentLoaded', type);
-    </script>
+    <script src="js/app.js"></script>
 	    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-393461309"></script>
     <script>
