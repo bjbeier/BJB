@@ -90,15 +90,13 @@
 
 
 
-    <!-- Blog Post List -->
+    <!-- Blog Post Container -->
 
-    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
-        <h2 class="text-4xl font-extrabold text-white mb-10 text-center">Latest Articles</h2>
-
-        <!-- Dynamic Blog List -->
-        <div id="blog-list" data-blog-list class="space-y-12">
-             <div class="text-center text-slate-400 animate-pulse">Loading articles...</div>
+        <!-- Dynamic Blog Container -->
+        <div id="blog-post-container" class="space-y-12 min-h-[500px]">
+            <div class="text-center text-slate-400 animate-pulse">Loading article...</div>
         </div>
 
     </main>
@@ -119,7 +117,12 @@
 
     <script src="js/app.js"></script>
     <script src="CMS/blog-loader.js"></script>
-
+    <!-- Auto-initialize loader for single post view -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSinglePost('blog-post-container');
+        });
+    </script>
 </body>
 
-</html>s
+</html>
