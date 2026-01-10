@@ -76,6 +76,18 @@
                 -webkit-text-fill-color: transparent;
             }
         }
+
+        /* ==================== REVEAL ANIMATIONS ==================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -144,7 +156,7 @@
             <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
 
                 <!-- Text Content -->
-                <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
+                <div class="reveal lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
                     <!-- Status Badge -->
                     <div
                         class="inline-flex items-center px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-xs font-mono mb-6">
@@ -251,7 +263,7 @@
                 </div>
 
                 <!-- Visual/Image Desktop (Hidden on Mobile) -->
-                <div class="lg:col-span-5 relative hidden lg:block">
+                <div class="reveal lg:col-span-5 relative hidden lg:block">
                     <!-- Decorative blob -->
                     <div
                         class="absolute -top-10 -right-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
@@ -313,7 +325,7 @@
     <!-- Tech Stack Section -->
     <section id="stack" class="py-20 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div class="reveal text-center mb-16">
                 <h2 class="text-3xl font-bold text-white mb-4">The Stack & Interests</h2>
                 <p class="text-slate-400 max-w-2xl mx-auto">
                     From enterprise boardrooms to my personal home lab rack, these are the tools and technologies I
@@ -321,7 +333,7 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-6">
                 <!-- Stack Item 1 -->
                 <div class="glass-card p-6 rounded-xl hover:bg-slate-800 transition-colors group cursor-default">
                     <div class="flex items-center justify-between mb-4">
@@ -372,7 +384,7 @@
     <!-- Projects / Lab Section -->
     <section id="projects" class="py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div class="reveal flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
                     <h2 class="text-3xl font-bold text-white mb-4">Projects & Lab</h2>
                     <p class="text-slate-400">Current experiments and past ventures.</p>
@@ -380,7 +392,7 @@
                 <!-- REMOVED: View GitHub Activity link -->
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="reveal grid md:grid-cols-2 gap-8">
                 <!-- Project 1 -->
                 <div
                     class="group relative rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 p-8 hover:border-brand-accent/50 transition-all duration-300 flex flex-col h-full">
@@ -438,10 +450,12 @@
     <!-- The Network (Interesting Links) -->
     <section id="network" class="py-20 bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-white mb-8">The Network</h2>
-            <p class="text-slate-400 mb-8 max-w-2xl">Communities, groups, and resources I find valuable.</p>
+            <div class="reveal">
+                <h2 class="text-3xl font-bold text-white mb-8">The Network</h2>
+                <p class="text-slate-400 mb-8 max-w-2xl">Communities, groups, and resources I find valuable.</p>
+            </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="reveal grid md:grid-cols-3 gap-6">
                 <!-- Network Item 1 (TabGeeks) - UPDATED DESCRIPTION -->
                 <a href="https://tabgeeks.com" target="_blank" rel="noopener noreferrer"
                     class="glass-card p-6 rounded-lg hover:border-brand-accent/50 transition-all group">
@@ -521,7 +535,7 @@
     <!-- Latest Thoughts Preview -->
 
     <section id="thoughts-preview" class="py-20 border-y border-white/5 bg-slate-800/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-white mb-6">Digital Insights</h2>
             <p class="text-slate-400 mb-8">Thoughts on leadership, technology, and tinkering.</p>
             <a href="blog.html"
