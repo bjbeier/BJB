@@ -7,8 +7,17 @@
     <title>BJ Beier | Leader & Tech Enthusiast</title>
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://placehold.co; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://unpkg.com;">
+        content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://www.googletagmanager.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://placehold.co https://www.google-analytics.com https://www.googletagmanager.com https://analytics.google.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://unpkg.com https://www.googletagmanager.com https://analytics.google.com;">
     <meta name="description" content="Personal site of BJ Beier - Leader, Tech Enthusiast, and Problem Solver.">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-393461309"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-393461309');
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -594,6 +603,7 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-393461309"></script>
     <script src="js/analytics.js" defer></script>
+
 </body>
 
 </html>
