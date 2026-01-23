@@ -1,4 +1,6 @@
-tailwind.config = {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ["./**/*.{html,js}"],
     theme: {
         extend: {
             fontFamily: {
@@ -12,6 +14,9 @@ tailwind.config = {
                     terminal: '#22c55e', // Green 500
                 }
             }
-        }
-    }
+        },
+    },
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
 }
